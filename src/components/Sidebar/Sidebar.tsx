@@ -1,93 +1,110 @@
-import Box from '@mui/material/Box'
-import ButtonBase from '@mui/material/ButtonBase'
-import Typography from '@mui/material/Typography'
-import { RangeControl } from '../RangeControl'
-import { SegmentedControl } from '../SegmentedControl'
-import type { Locale, PlaygroundState, Screen, SetPlaygroundState } from '../types'
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
+import Typography from "@mui/material/Typography";
+import { RangeControl } from "../RangeControl";
+import { SegmentedControl } from "../SegmentedControl";
+import type {
+  Locale,
+  PlaygroundState,
+  Screen,
+  SetPlaygroundState,
+} from "../types";
 
 type SidebarProps = {
-  screens: Screen[]
-  state: PlaygroundState
-  setState: SetPlaygroundState
-}
+  screens: Screen[];
+  state: PlaygroundState;
+  setState: SetPlaygroundState;
+};
 
 export function Sidebar({ screens, state, setState }: SidebarProps) {
   return (
     <Box
       component="aside"
       sx={{
-        background: 'var(--panel)',
-        borderRight: '1px solid var(--border)',
-        overflowY: 'auto',
+        background: "var(--panel)",
+        borderRight: "1px solid var(--border)",
+        overflowY: "auto",
         padding: 2,
-        scrollbarColor: '#3b4552 transparent',
-      }}
-    >
+        scrollbarColor: "#3b4552 transparent",
+      }}>
       <Typography
         component="h1"
-        sx={{ color: 'var(--text)', fontSize: 14, fontWeight: 600, mt: 0, mb: 0.5 }}
-      >
+        sx={{
+          color: "var(--text)",
+          fontSize: 14,
+          fontWeight: 600,
+          mt: 0,
+          mb: 0.5,
+        }}>
         Affiliate Widget - Wireframes
       </Typography>
-      <Typography sx={{ color: 'var(--text-dim)', fontSize: 11, mb: 2 }}>
+      <Typography sx={{ color: "var(--text-dim)", fontSize: 11, mb: 2 }}>
         2026-05-07 design (replaces 260506)
       </Typography>
 
       <SectionHeading>Screen</SectionHeading>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
         {screens.map((screen, index) => {
-          const active = state.screen === screen.id
+          const active = state.screen === screen.id;
           return (
             <ButtonBase
               key={screen.id}
-              onClick={() => setState((current) => ({ ...current, screen: screen.id }))}
+              onClick={() =>
+                setState((current) => ({ ...current, screen: screen.id }))
+              }
               sx={{
-                background: active ? 'var(--accent)' : 'var(--panel-2)',
-                border: `1px solid ${active ? 'var(--accent)' : 'var(--border)'}`,
-                borderRadius: '6px',
-                color: active ? '#fff' : 'var(--text)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                font: 'inherit',
+                background: active ? "var(--accent)" : "var(--panel-2)",
+                border: `1px solid ${active ? "var(--accent)" : "var(--border)"}`,
+                borderRadius: "6px",
+                color: active ? "#fff" : "var(--text)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                font: "inherit",
                 fontSize: 11,
                 lineHeight: 1.4,
-                padding: '9px 10px',
-                textAlign: 'left',
+                padding: "9px 10px",
+                textAlign: "left",
                 transition:
-                  'background 140ms var(--mui-ease), border-color 140ms var(--mui-ease), transform 140ms var(--mui-ease)',
-                '&:hover': { background: active ? 'var(--accent)' : 'var(--border)', transform: 'translateX(2px)' },
-              }}
-            >
-              <Box component="span" sx={{ display: 'block', width: '100%' }}>
+                  "background 140ms var(--mui-ease), border-color 140ms var(--mui-ease), transform 140ms var(--mui-ease)",
+                "&:hover": {
+                  background: active ? "var(--accent)" : "var(--border)",
+                  transform: "translateX(2px)",
+                },
+              }}>
+              <Box
+                component="span"
+                sx={{ display: "block", width: "100%" }}>
                 <Box
                   component="span"
                   sx={{
-                    color: active ? 'rgba(255,255,255,0.82)' : 'var(--text-dim)',
-                    fontFamily: 'var(--mono)',
+                    color: active
+                      ? "rgba(255,255,255,0.82)"
+                      : "var(--text-dim)",
+                    fontFamily: "var(--mono)",
                     fontSize: 10,
                     mr: 0.75,
-                  }}
-                >
-                  {String(index + 1).padStart(2, '0')}
+                  }}>
+                  {String(index + 1).padStart(2, "0")}
                 </Box>
-                <Box component="span" sx={{ fontWeight: 600 }}>
+                <Box
+                  component="span"
+                  sx={{ fontWeight: 600 }}>
                   {screen.title}
                 </Box>
               </Box>
               <Box
                 component="span"
                 sx={{
-                  color: active ? 'rgba(255,255,255,0.82)' : 'var(--text-dim)',
-                  display: 'block',
+                  color: active ? "rgba(255,255,255,0.82)" : "var(--text-dim)",
+                  display: "block",
                   fontSize: 10,
                   mt: 0.25,
-                }}
-              >
+                }}>
                 {screen.meta}
               </Box>
             </ButtonBase>
-          )
+          );
         })}
       </Box>
 
@@ -95,11 +112,13 @@ export function Sidebar({ screens, state, setState }: SidebarProps) {
         label="Locale"
         value={state.locale}
         options={[
-          { label: 'EN', value: 'en' },
-          { label: 'MS', value: 'ms' },
-          { label: 'ZH', value: 'zh-CN' },
+          { label: "EN", value: "en" },
+          { label: "MS", value: "ms" },
+          { label: "ZH", value: "zh-CN" },
         ]}
-        onChange={(locale: Locale) => setState((current) => ({ ...current, locale }))}
+        onChange={(locale: Locale) =>
+          setState((current) => ({ ...current, locale }))
+        }
       />
 
       <SectionHeading>State</SectionHeading>
@@ -128,10 +147,12 @@ export function Sidebar({ screens, state, setState }: SidebarProps) {
         step={5}
         value={state.lastConv}
         display={`RM ${state.lastConv.toFixed(2)}`}
-        onChange={(lastConv) => setState((current) => ({ ...current, lastConv }))}
+        onChange={(lastConv) =>
+          setState((current) => ({ ...current, lastConv }))
+        }
       />
     </Box>
-  )
+  );
 }
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -139,16 +160,15 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
     <Typography
       component="h2"
       sx={{
-        color: 'var(--text-dim)',
+        color: "var(--text-dim)",
         fontSize: 11,
         fontWeight: 600,
-        letterSpacing: '0.06em',
+        letterSpacing: "0.06em",
         mt: 2,
         mb: 1,
-        textTransform: 'uppercase',
-      }}
-    >
+        textTransform: "uppercase",
+      }}>
       {children}
     </Typography>
-  )
+  );
 }

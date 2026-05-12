@@ -89,7 +89,7 @@ export function AffiliateShareCard({ t }: AffiliateShareCardProps) {
             sx={{
               color: "#ffffff",
               fontSize: 24,
-              fontWeight: 600,
+              fontWeight: 500,
               lineHeight: 1.25,
               letterSpacing: "-0.02em",
             }}>
@@ -132,7 +132,7 @@ export function AffiliateShareCard({ t }: AffiliateShareCardProps) {
               content: '""',
               borderRadius: "inherit",
               background:
-                "conic-gradient(from var(--pro-promo-angle, 0deg), rgba(245,184,0,0), #f5b800, #ffe27a, #f5b800, rgba(245,184,0,0))",
+                "conic-gradient(from var(--pro-promo-angle, 0deg), rgba(245,184,0,0), #f5b800, #ffe27a, #fce9b2, rgba(245,184,0,0))",
               pointerEvents: "none",
               zIndex: 2,
               padding: "2px",
