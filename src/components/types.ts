@@ -1,7 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react'
 
 export type Locale = 'en' | 'ms' | 'zh-CN'
-export type Portal = 'v1' | 'v2'
 
 export type ScreenId =
   | 'sa-seller-widgets'
@@ -20,7 +19,6 @@ export type ScreenId =
 
 export type PlaygroundState = {
   screen: ScreenId
-  portal: Portal
   locale: Locale
   balance: number
   rate: number
