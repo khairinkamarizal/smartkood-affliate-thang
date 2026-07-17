@@ -37,13 +37,14 @@
   color: var(--text);
   display: grid;
   font:
-    13px/1.5 Roboto,
+    13px/1.5 "SF Pro Text",
+    "SF Pro Display",
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
     system-ui,
     sans-serif;
-  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-columns: 320px minmax(0, 1fr) 390px;
   height: 100svh;
   overflow: hidden;
 }
@@ -86,6 +87,45 @@
   justify-content: center;
   overflow: auto;
   padding: 24px;
+}
+
+.stage .MuiTypography-root,
+.stage .MuiButton-root,
+.stage .MuiChip-root,
+.stage input {
+  font-family: inherit;
+}
+
+.handoff-sidebar {
+  background: #111617;
+  border-left: 1px solid #293132;
+  color: #e9efef;
+  display: grid;
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+  min-height: 0;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.handoff-titlebar { align-items: flex-start; display: flex; justify-content: space-between; margin-bottom: 16px; }
+.wireframe-app .handoff-titlebar h2 { color: #f4f8f8; font-size: 16px; letter-spacing: -.02em; margin: 0 0 3px; text-transform: none; }
+.handoff-titlebar p { color: #8f9b9c; font: 10px var(--mono); margin: 0; }
+.handoff-titlebar > span { border: 1px solid #364142; border-radius: 6px; color: #8fa0a1; font: 9px var(--mono); padding: 3px 6px; }
+.handoff-sidebar .MuiTabs-root { border: 1px solid #2c3637; border-radius: 9px; min-height: 38px; }
+.handoff-sidebar .MuiTab-root { color: #839091; font-size: 9px; min-height: 38px; padding: 7px 3px; }
+.handoff-sidebar .MuiTab-root.Mui-selected { color: #f0f5f5; }
+.handoff-sidebar .MuiTabs-indicator { background: #75b9d6; height: 2px; }
+.editor-toolbar { align-items: center; background: #192021; border: 1px solid #2c3637; border-bottom: 0; border-radius: 9px 9px 0 0; display: flex; justify-content: space-between; margin-top: 14px; padding: 5px 7px 5px 12px; }
+.editor-toolbar > span { color: #738082; font: 9px var(--mono); }
+.editor-toolbar .MuiButton-root { color: #cbd4d4; font-size: 9px; min-height: 30px; padding: 3px 7px; text-transform: none; }
+.code-editor { background: #0b0f10; border: 1px solid #2c3637; border-radius: 0 0 9px 9px; color: #d5dddd; font: 10px/1.65 var(--mono); margin: 0; min-height: 0; overflow: auto; padding: 15px; white-space: pre-wrap; }
+.handoff-live { height: 0; overflow: hidden; position: absolute; width: 0; }
+.palette-strip { display: grid; gap: 5px; grid-template-columns: repeat(5, 1fr); margin-top: 14px; }
+.palette-strip span { border: 1px solid rgba(255,255,255,.1); border-radius: 4px; height: 8px; }
+
+@media (max-width: 1280px) {
+  .wireframe-app { grid-template-columns: 320px minmax(0, 1fr); }
+  .handoff-sidebar { display: none; }
 }
 
 button:focus-visible,

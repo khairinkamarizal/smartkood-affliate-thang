@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { ScreenFrame } from './components/ScreenFrame'
 import { Sidebar } from './components/Sidebar'
+import { HandoffPanel } from './components/HandoffPanel'
 import type { Locale, PlaygroundState, Screen } from './components/types'
 import './App.css'
 
@@ -294,6 +295,7 @@ function App() {
           <ScreenFrame screen={screen} state={state} t={t} />
         </section>
       </main>
+      <HandoffPanel screen={state.screen} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-import { BalanceCallout } from "../BalanceCallout";
 import type { PlaygroundState, Translator } from "../types";
 
 type ConversionEmailProps = {
@@ -12,6 +12,7 @@ type ConversionEmailProps = {
 
 export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
   const isStub = variant === "stub";
+  const amount = `RM ${state.lastConv.toFixed(2)}`;
   const href = isStub
     ? "https://buyer.smartaffiliate.com/signup?email=aishah@example.com&claim_widget=true"
     : "https://buyer.smartaffiliate.com/login?email=aishah@example.com";
@@ -19,115 +20,197 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
   return (
     <Box
       sx={{
-        background: "#fff",
-        border: "1px solid var(--sa-border)",
+        background: "radial-gradient(circle at 8% 8%, rgba(90,200,250,.18), transparent 28%), radial-gradient(circle at 92% 92%, rgba(255,59,107,.12), transparent 30%), #f5f5f7",
         borderRadius: "8px",
-        overflow: "hidden",
-      }}>
+        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif',
+        padding: { xs: 1.5, sm: 2.5 },
+      }}
+    >
       <Box
         sx={{
-          background: "#fafafa",
-          borderBottom: "1px solid var(--sa-border)",
-          fontSize: 12,
-          padding: "14px 20px",
-        }}>
-        <HeaderRow
-          label="From:"
-          value="SmartAffiliate <noreply@smartaffiliate.com>"
-        />
-        <HeaderRow
-          label="To:"
-          value="aishah@example.com"
-        />
-        <HeaderRow
-          label="Subject:"
-          value={t("emailConvSubject")}
-        />
-      </Box>
-      <Box
-        sx={{
-          color: "var(--sa-text)",
-          fontSize: 14,
-          lineHeight: 1.65,
+          background: "rgba(255,255,255,.72)",
+          border: "1px solid #e2e3e8",
+          borderRadius: "14px 14px 0 0",
+          color: "#5c5961",
+          fontSize: 11,
+          lineHeight: 1.4,
           mx: "auto",
-          maxWidth: 720,
-          padding: "28px 32px",
-        }}>
-        <Typography
-          component="h2"
+          maxWidth: 600,
+          padding: "12px 18px",
+        }}
+      >
+        <HeaderRow label="From:" value="SmartAffiliate <noreply@smartaffiliate.com>" />
+        <HeaderRow label="To:" value="aishah@example.com" />
+        <HeaderRow label="Subject:" value={t("emailConvSubject")} />
+      </Box>
+
+      <Box
+        component="article"
+        aria-labelledby="email-newsletter-title"
+        sx={{
+          background: "#fff",
+          border: "1px solid #e2e3e8",
+          borderRadius: "0 0 22px 22px",
+          boxShadow: "0 24px 60px rgba(33,28,49,.1)",
+          color: "#171419",
+          mx: "auto",
+          maxWidth: 600,
+          overflow: "hidden",
+          position: "relative",
+          "&::before": {
+            background: "linear-gradient(90deg, #5ac8fa, #0071e3 34%, #ff3b6b 68%, #ff9f0a)",
+            content: '""',
+            height: 3,
+            left: 0,
+            position: "absolute",
+            right: 0,
+            top: 0,
+          },
+        }}
+      >
+        <Box
+          component="header"
           sx={{
-            color: "#047857",
-            fontSize: 22,
-            fontWeight: 700,
-            mt: 0,
-            mb: 1.5,
-          }}>
-          {t("emailConvSubject")}
-        </Typography>
-        <Typography sx={{ m: 0, mb: 1.75 }}>{t("emailConvHello")}</Typography>
-        <Typography sx={{ m: 0, mb: 1.75 }}>{t("emailConvBody")}</Typography>
+            alignItems: "center",
+            background: "#0071e3",
+            display: "flex",
+            justifyContent: "space-between",
+            padding: { xs: "23px 22px", sm: "27px 38px" },
+          }}
+        >
+          <Typography sx={{ color: "#fff", fontSize: 19, fontWeight: 700, letterSpacing: "-.025em" }}>
+            smartaffiliate<Box component="span" sx={{ color: "#ffd60a" }}>.</Box>
+          </Typography>
+          <Box sx={{ alignItems: "center", display: "flex", gap: 1.25 }}>
+            <Box aria-hidden="true" sx={{ display: "flex", gap: .5 }}>
+              <span style={{ background: '#64d2ff', borderRadius: '50%', height: 8, width: 8 }} />
+              <span style={{ background: '#ff375f', borderRadius: '50%', height: 8, width: 8 }} />
+              <span style={{ background: '#ffd60a', borderRadius: '50%', height: 8, width: 8 }} />
+            </Box>
+            <Typography sx={{ color: "rgba(255,255,255,.78)", fontSize: 11, fontWeight: 500 }}>SmartKood</Typography>
+          </Box>
+        </Box>
+
         <Box
           sx={{
-            background: "#f9fafb",
-            border: "1px solid #edf0f3",
-            borderRadius: "8px",
-            fontSize: 13,
-            my: 1.75,
-            padding: "12px 16px",
-          }}>
-          <strong>{t("productName")}</strong>
-          <br />
-          {t("productPrice")} - {t("earnRate")}
+            background:
+              "radial-gradient(circle at 4% 0%, rgba(90,200,250,.62), transparent 43%), radial-gradient(circle at 100% 18%, rgba(255,59,107,.42), transparent 40%), radial-gradient(circle at 52% 118%, rgba(255,159,10,.38), transparent 42%), #fff",
+            borderBlock: "1px solid #ececf0",
+            padding: { xs: "42px 24px 38px", sm: "52px 48px 46px" },
+            textAlign: "center",
+          }}
+        >
+          <Typography sx={{ color: "#77717b", fontSize: 14, mb: 1.5 }}>{t("emailConvHello")}</Typography>
+          <Typography
+            component="div"
+            id="email-newsletter-title"
+            role="heading"
+            aria-level={1}
+            sx={{ fontSize: { xs: 34, sm: 40 }, fontWeight: 700, letterSpacing: "-.04em", lineHeight: 1.06, m: "0 auto", maxWidth: 480 }}
+          >
+            <HighlightedText text={t("emailConvSubject")} highlight={amount} />
+          </Typography>
+          <Typography sx={{ color: "#68626c", fontSize: 15, lineHeight: 1.55, m: "20px auto 0", maxWidth: 470 }}>
+            {t("emailConvBody")}
+          </Typography>
         </Box>
-        <BalanceCallout
-          amount={`RM ${state.balance.toFixed(2)}`}
-          label={t("emailConvBalanceLabel")}
-        />
-        <Box sx={{ my: 3, textAlign: "center" }}>
-          <Link
-            href={href}
-            underline="none"
+
+        <Box sx={{ padding: { xs: "30px 24px 34px", sm: "38px 48px 42px" } }}>
+          <Box
             sx={{
-              background: "var(--sa-accent)",
-              borderRadius: "8px",
-              color: "#fff",
-              display: "inline-block",
-              fontWeight: 600,
-              padding: "14px 28px",
-              transition: "transform 140ms var(--mui-ease)",
-              "&:hover": { transform: "translateY(-1px)" },
-            }}>
-            {isStub ? t("emailConvCtaStub") : t("emailConvCtaReal")}
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            borderTop: "1px solid var(--sa-border)",
-            color: "var(--sa-text-dim)",
-            fontSize: 11,
-            mt: 3,
-            pt: 2,
-          }}>
-          {t("emailConvFooter")}
+              background: "#f2f8fc",
+              border: "1px solid #dceaf1",
+              borderRadius: "14px",
+              display: "grid",
+              gap: 2,
+              gridTemplateColumns: "minmax(0,1fr) auto",
+              padding: "18px 20px",
+            }}
+          >
+            <Box sx={{ minWidth: 0 }}>
+              <Typography sx={{ color: "#171419", fontSize: 14, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{t("productName")}</Typography>
+              <Typography sx={{ color: "#8a848e", fontSize: 11.5, mt: .6 }}>{t("earnRate")}</Typography>
+            </Box>
+            <Typography sx={{ color: "#171419", fontSize: 14, fontWeight: 600 }}>{t("productPrice")}</Typography>
+          </Box>
+
+          <Box
+            sx={{
+              alignItems: "flex-end",
+              background: "#fff7e8",
+              border: "1px solid #f2dfbd",
+              borderRadius: "14px",
+              display: "flex",
+              justifyContent: "space-between",
+              mt: 1.5,
+              padding: "19px 20px",
+            }}
+          >
+            <Typography sx={{ color: "#75674f", fontSize: 12.5, fontWeight: 500 }}>{t("emailConvBalanceLabel")}</Typography>
+            <Typography sx={{ color: "#171419", fontSize: 32, fontWeight: 700, letterSpacing: "-.04em", lineHeight: 1 }}>RM {state.balance.toFixed(2)}</Typography>
+          </Box>
+
+          <Box sx={{ pt: 3, textAlign: "center" }}>
+            <Link
+              href={href}
+              underline="none"
+              sx={{
+                alignItems: "center",
+                background: "#0071e3",
+                borderRadius: "12px",
+                boxShadow: "0 10px 24px rgba(0,113,227,.24)",
+                color: "#fff",
+                display: "inline-flex",
+                fontSize: 14,
+                fontWeight: 600,
+                gap: .75,
+                justifyContent: "center",
+                minHeight: 44,
+                padding: "0 21px",
+                transition: "transform .2s ease, box-shadow .2s ease",
+                "&:hover": { background: "#0064c8", boxShadow: "0 13px 28px rgba(0,113,227,.3)", transform: "translateY(-1px)" },
+                "&:focus-visible": { outline: "3px solid #73c8f2", outlineOffset: 3 },
+              }}
+            >
+              {isStub ? t("emailConvCtaStub") : t("emailConvCtaReal")}
+              <ArrowForwardRoundedIcon sx={{ fontSize: 16 }} />
+            </Link>
+          </Box>
+
+          <Box
+            component="footer"
+            sx={{
+              background: "#f5f7fa",
+              border: "1px solid #e3e8ef",
+              borderRadius: "14px",
+              color: "#85808b",
+              fontSize: 10.5,
+              lineHeight: 1.5,
+              mt: 4,
+              padding: "20px 22px",
+              textAlign: "center",
+            }}
+          >
+            <Typography sx={{ color: "#0071e3", fontSize: 12, fontWeight: 600, mb: 1 }}>SmartAffiliate · SmartKood</Typography>
+            {t("emailConvFooter")}
+          </Box>
         </Box>
       </Box>
     </Box>
   );
 }
 
+function HighlightedText({ text, highlight }: { text: string; highlight: string }) {
+  const parts = text.split(highlight);
+  if (parts.length === 1) return text;
+  return <>{parts[0]}<Box component="span" sx={{ color: "#ff3b6b" }}>{highlight}</Box>{parts.slice(1).join(highlight)}</>;
+}
+
 function HeaderRow({ label, value }: { label: string; value: string }) {
   return (
-    <Box sx={{ display: "flex", gap: 1, py: "2px" }}>
-      <Box
-        component="span"
-        sx={{ color: "var(--sa-text-dim)", minWidth: 50 }}>
-        {label}
-      </Box>
-      <Box
-        component="span"
-        sx={{ color: "var(--sa-text)" }}>
-        {value}
-      </Box>
+    <Box sx={{ display: "grid", gap: 1, gridTemplateColumns: "45px minmax(0,1fr)", py: "2px" }}>
+      <Box component="span" sx={{ color: "#929099", fontSize: 10, fontWeight: 600 }}>{label}</Box>
+      <Box component="span" sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{value}</Box>
     </Box>
   );
 }

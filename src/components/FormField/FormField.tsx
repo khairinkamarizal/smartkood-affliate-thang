@@ -5,17 +5,19 @@ import Typography from "@mui/material/Typography";
 type FormFieldProps = {
   label: string;
   children: ReactNode;
+  htmlFor?: string;
 };
 
-export function FormField({ label, children }: FormFieldProps) {
+export function FormField({ label, children, htmlFor }: FormFieldProps) {
   return (
     <Box sx={{ mb: 1.75 }}>
       <Typography
         component="label"
+        htmlFor={htmlFor}
         sx={{
           color: "var(--sk-text-dim)",
           display: "block",
-          fontSize: 12,
+          fontSize: 13,
           fontWeight: 500,
           mb: 0.75,
         }}>
@@ -29,9 +31,9 @@ export function FormField({ label, children }: FormFieldProps) {
             borderRadius: "8px",
             color: "var(--sk-text)",
             font: "inherit",
-            fontSize: 13,
-            minHeight: 42,
-            padding: "10px 12px",
+            fontSize: 15,
+            minHeight: 44,
+            padding: "11px 13px",
             transition:
               "background 140ms var(--mui-ease), border-color 140ms var(--mui-ease)",
             width: "100%",

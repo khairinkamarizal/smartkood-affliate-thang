@@ -3,21 +3,18 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CheckIcon from "@mui/icons-material/Check";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import XIcon from "@mui/icons-material/X";
-import RedditIcon from "@mui/icons-material/Reddit";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import IconButton from "@mui/material/IconButton";
-import { useRef, useState, type ReactNode } from "react";
+import PinterestIcon from "@mui/icons-material/Pinterest";
+import RedditIcon from "@mui/icons-material/Reddit";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import XIcon from "@mui/icons-material/X";
+import { useState, type ReactNode } from "react";
 import { FormField } from "../FormField";
 import type { ShareVariant, Translator } from "../types";
 
@@ -28,21 +25,43 @@ type ShareDialogScreenProps = {
 
 export function ShareDialogScreen({ variant, t }: ShareDialogScreenProps) {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box
+      sx={{
+        background:
+          "radial-gradient(circle at 85% 12%, rgba(90,200,250,.72), transparent 35%), radial-gradient(circle at 8% 62%, rgba(255,59,107,.34), transparent 35%), radial-gradient(circle at 75% 88%, rgba(255,159,10,.4), transparent 38%), linear-gradient(145deg, #f2f8ff 0%, #edf7ff 48%, #fff7e8 100%)",
+        borderRadius: "8px",
+        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif',
+        minHeight: 650,
+        overflow: "hidden",
+        position: "relative",
+        width: "100%",
+      }}
+    >
       <Box
         sx={{
-          background: "var(--sk-primary)",
+          alignItems: "center",
+          backdropFilter: "blur(22px)",
+          background: "rgba(24,22,29,.88)",
           color: "#fff",
+          display: "flex",
           fontSize: 12,
+          fontWeight: 500,
+          height: 52,
+          justifyContent: "center",
+          letterSpacing: 0,
           padding: "14px",
-          textAlign: "center",
-        }}>
+        }}
+      >
         SmartKood landing page (background dimmed)
       </Box>
-      <ShareDialog
-        t={t}
-        variant={variant}
-      />
+
+      <Box aria-hidden="true" sx={{ inset: 52, left: 0, opacity: .42, position: "absolute", right: 0 }}>
+        <Box sx={{ bgcolor: "rgba(255,255,255,.74)", borderRadius: 3, boxShadow: "0 18px 38px rgba(44,35,80,.12)", height: 160, m: 2 }} />
+        <Box sx={{ bgcolor: "rgba(42,38,49,.58)", borderRadius: 1, height: 12, ml: 2, mt: 2, width: "58%" }} />
+        <Box sx={{ bgcolor: "rgba(42,38,49,.32)", borderRadius: 1, height: 8, ml: 2, mt: 1.25, width: "76%" }} />
+      </Box>
+      <Box sx={{ backdropFilter: "blur(5px)", background: "rgba(17,15,24,.38)", inset: 52, left: 0, position: "absolute", right: 0 }} />
+      <ShareDialog t={t} variant={variant} />
     </Box>
   );
 }
@@ -50,40 +69,45 @@ export function ShareDialogScreen({ variant, t }: ShareDialogScreenProps) {
 function ShareDialog({ variant, t }: ShareDialogScreenProps) {
   return (
     <Box
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="share-dialog-title"
       sx={{
-        background: "#fff",
-        borderRadius: "12px 12px 0 0",
-        color: "var(--sk-text)",
-        padding: "20px",
-        position: "relative",
+        backdropFilter: "blur(30px) saturate(130%)",
+        background:
+          "radial-gradient(circle at 88% 0%, rgba(90,200,250,.18), transparent 34%), radial-gradient(circle at 8% 8%, rgba(0,113,227,.1), transparent 31%), rgba(255,255,255,.95)",
+        border: "1px solid rgba(255,255,255,.88)",
+        borderBottom: 0,
+        borderRadius: "28px 28px 0 0",
+        bottom: 0,
+        boxShadow: "0 -24px 64px rgba(18,41,64,.24), inset 0 1px 0 rgba(255,255,255,.9)",
+        color: "#19151f",
+        left: 0,
+        padding: "20px 20px 24px",
+        position: "absolute",
+        right: 0,
+        "--sk-border": "#d9d8e0",
+        "--sk-input-bg": "rgba(245,245,248,.9)",
+        "--sk-secondary": "#0071e3",
+        "--sk-text": "#19151f",
+        "--sk-text-dim": "#746f7a",
         "&::before": {
-          background: "#d1d5db",
-          borderRadius: "999px",
+          background: "linear-gradient(90deg, #5ac8fa, #0071e3 34%, #ff3b6b 68%, #ff9f0a)",
+          borderRadius: "99px",
           content: '""',
           display: "block",
-          height: 3,
-          margin: "-8px auto 14px",
-          width: 40,
+          height: 4,
+          margin: "-8px auto 20px",
+          width: 44,
         },
-      }}>
+      }}
+    >
       {variant === "initial" && (
         <>
           <DialogHeading text={t("dialogTitle")} />
-          <Typography
-            sx={{
-              color: "var(--sk-text-dim)",
-              fontSize: 12,
-              lineHeight: 1.5,
-              mb: 1.5,
-            }}>
-            {t("dialogHelper")}
-          </Typography>
-          <FormField label={t("emailLabel")}>
-            <input
-              defaultValue="aishah@example.com"
-              placeholder="you@example.com"
-              type="email"
-            />
+          <DialogCopy>{t("dialogHelper")}</DialogCopy>
+          <FormField label={t("emailLabel")} htmlFor="share-email">
+            <input id="share-email" defaultValue="aishah@example.com" placeholder="you@example.com" type="email" />
           </FormField>
           <FormActions>
             <CancelButton>{t("cancel")}</CancelButton>
@@ -91,78 +115,47 @@ function ShareDialog({ variant, t }: ShareDialogScreenProps) {
           </FormActions>
         </>
       )}
+
       {variant === "submitting" && (
         <>
           <DialogHeading text={t("dialogTitle")} />
-          <Typography
-            sx={{
-              color: "var(--sk-text-dim)",
-              fontSize: 12,
-              lineHeight: 1.5,
-              mb: 1.5,
-            }}>
-            {t("dialogHelper")}
-          </Typography>
-          <FormField label={t("emailLabel")}>
-            <input
-              defaultValue="aishah@example.com"
-              disabled
-              type="email"
-            />
+          <DialogCopy>{t("dialogHelper")}</DialogCopy>
+          <FormField label={t("emailLabel")} htmlFor="share-email-loading">
+            <input id="share-email-loading" defaultValue="aishah@example.com" disabled type="email" />
           </FormField>
           <FormActions>
             <CancelButton>{t("cancel")}</CancelButton>
-            <SubmitButton disabled>
-              <Box
-                component="span"
-                sx={{
-                  alignItems: "center",
-                  display: "inline-flex",
-                  gap: 1,
-                }}>
-                <CircularProgress
-                  size={14}
-                  sx={{ color: "#fff" }}
-                />
+            <SubmitButton disabled state="loading">
+              <Box component="span" sx={{ alignItems: "center", display: "inline-flex", gap: 1 }}>
+                <CircularProgress size={14} sx={{ color: "inherit" }} />
                 {t("submitting")}
               </Box>
             </SubmitButton>
           </FormActions>
         </>
       )}
+
       {variant === "success" && <ShareSuccess t={t} />}
+
       {variant === "error-rate" && (
         <>
           <DialogHeading text={t("dialogTitle")} />
-          <Alert
-            severity="warning"
-            sx={{ mb: 1.5, fontSize: 12 }}>
-            {t("errorRateLimited")}
-          </Alert>
-          <FormField label={t("emailLabel")}>
-            <input
-              defaultValue="aishah@example.com"
-              disabled
-              type="email"
-            />
+          <Alert severity="warning" sx={alertStyles("#fff3cf", "#a66500")}>{t("errorRateLimited")}</Alert>
+          <FormField label={t("emailLabel")} htmlFor="share-email-rate">
+            <input id="share-email-rate" defaultValue="aishah@example.com" disabled type="email" />
           </FormField>
           <FormActions>
             <CancelButton>{t("cancel")}</CancelButton>
-            <SubmitButton disabled>{t("submit")} (60s)</SubmitButton>
+            <SubmitButton disabled state="unavailable">{t("submit")} (60s)</SubmitButton>
           </FormActions>
         </>
       )}
+
       {variant === "error-revoked" && (
         <>
           <DialogHeading text={t("dialogTitle")} />
-          <Alert
-            severity="error"
-            sx={{ mb: 1.5, fontSize: 12 }}>
-            {t("errorRevoked")}
-          </Alert>
-          <FormActions>
-            <SubmitButton>{t("done")}</SubmitButton>
-          </FormActions>
+          <Alert severity="error" sx={alertStyles("#fff0ee", "#b83c35")}>{t("errorRevoked")}</Alert>
+          <SubmitButton fullWidth>{t("done")}</SubmitButton>
         </>
       )}
     </Box>
@@ -170,30 +163,10 @@ function ShareDialog({ variant, t }: ShareDialogScreenProps) {
 }
 
 function ShareSuccess({ t }: { t: Translator }) {
-  const url =
-    "https://buyer.smartaffiliate.com/shop/products/aerolite-3000?ref=AKLR8MX2";
+  const url = "https://buyer.smartaffiliate.com/shop/products/aerolite-3000?ref=AKLR8MX2";
   const [copied, setCopied] = useState(false);
-  const carouselRef = useRef<HTMLDivElement | null>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const scrollCarousel = (dir: -1 | 1) => {
-    carouselRef.current?.scrollBy({ left: dir * 220, behavior: "smooth" });
-  };
-
-  const handleScroll = () => {
-    const el = carouselRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
-  };
-
   const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(url);
-    } catch {
-      /* noop */
-    }
+    try { await navigator.clipboard.writeText(url); } catch { /* preview only */ }
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1600);
   };
@@ -201,358 +174,82 @@ function ShareSuccess({ t }: { t: Translator }) {
   return (
     <>
       <DialogHeading text={t("successTitle")} />
-      <Alert
-        icon={false}
-        severity="success"
-        sx={{
-          bgcolor: "#ecfdf5",
-          border: "1px solid #6ee7b7",
-          borderRadius: "6px",
-          color: "#047857",
-          fontSize: 11,
-          fontWeight: 600,
-          letterSpacing: "0.02em",
-          mb: 1.25,
-          py: "6px",
-        }}>
-        {t("successCommission")}
-      </Alert>
-      <Box
-        sx={{
-          alignItems: "stretch",
-          background: "#f9fafb",
-          border: "1px solid #e5e7eb",
-          borderRadius: "8px",
-          display: "flex",
-          mb: 1.5,
-          overflow: "hidden",
-        }}>
-        <Box
-          sx={{
-            color: "var(--sk-text)",
-            flex: 1,
-            fontFamily: "var(--mono)",
-            fontSize: 11.5,
-            letterSpacing: "-0.01em",
-            minWidth: 0,
-            overflow: "hidden",
-            padding: "9px 12px",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}>
-          {url}
-        </Box>
+      <Alert icon={false} severity="success" sx={alertStyles("rgba(229,250,241,.88)", "#087355")}>{t("successCommission")}</Alert>
+      <Box sx={{ alignItems: "stretch", bgcolor: "rgba(247,247,250,.9)", border: "1px solid #dedde5", borderRadius: "13px", display: "flex", mb: 1.5, overflow: "hidden" }}>
+        <Box component="code" sx={{ color: "#19151f", flex: 1, fontFamily: "var(--mono)", fontSize: 10.5, minWidth: 0, overflow: "hidden", p: "12px", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{url}</Box>
         <Button
           onClick={handleCopy}
-          disableRipple
-          sx={{
-            borderLeft: "1px solid #e5e7eb",
-            borderRadius: 0,
-            color: copied ? "#047857" : "var(--sk-secondary)",
-            flexShrink: 0,
-            fontSize: 11,
-            fontWeight: 600,
-            gap: 0,
-            letterSpacing: "0.02em",
-            minWidth: 80,
-            padding: "0 12px",
-            textTransform: "none",
-            transition: "color 0.18s ease, background 0.18s ease",
-            "&:hover": { background: "#f3f4f6" },
-          }}
-          startIcon={
-            copied ? (
-              <CheckIcon fontSize="small" />
-            ) : (
-              <ContentCopyIcon fontSize="small" />
-            )
-          }>
+          startIcon={copied ? <CheckIcon /> : <ContentCopyIcon />}
+          sx={{ borderLeft: "1px solid #dedde5", borderRadius: 0, color: copied ? "#087355" : "#0071e3", fontSize: 12, fontWeight: 600, minWidth: 92, textTransform: "none" }}
+        >
           {copied ? t("copied") : t("copy")}
         </Button>
       </Box>
-      <Typography
-        sx={{
-          color: "var(--sk-text-dim)",
-          fontSize: 10,
-          fontWeight: 600,
-          letterSpacing: "0.06em",
-          mb: 0.75,
-          mt: 0.5,
-          textAlign: "center",
-          textTransform: "uppercase",
-        }}>
+
+      <Typography sx={{ color: "#746f7a", fontSize: 10.5, fontWeight: 500, letterSpacing: ".02em", mb: 1, textAlign: "center" }}>
         {t("emailUsedFor")}
       </Typography>
+
       <Box
         sx={{
-          position: "relative",
-        }}>
-        {canScrollLeft && (
-          <Box
-            sx={{
-              background:
-                "linear-gradient(to right, #fff 50%, rgba(255,255,255,0))",
-              bottom: 0,
-              left: -10,
-              pointerEvents: "none",
-              position: "absolute",
-              top: 0,
-              width: 30,
-              zIndex: 1,
-            }}
-          />
-        )}
-        {canScrollRight && (
-          <Box
-            sx={{
-              background:
-                "linear-gradient(to left, #fff 50%, rgba(255,255,255,0))",
-              bottom: 0,
-              pointerEvents: "none",
-              position: "absolute",
-              right: -10,
-              top: 0,
-              width: 30,
-              zIndex: 1,
-            }}
-          />
-        )}
-        {canScrollLeft && (
-          <IconButton
-            aria-label="Scroll left"
-            onClick={() => scrollCarousel(-1)}
-            size="small"
-            sx={{
-              background: "#fff",
-              border: "1px solid #e5e7eb",
-              borderRadius: "50%",
-              boxShadow: "0 1px 3px rgba(15, 23, 42, 0.08)",
-              color: "var(--sk-text)",
-              height: 24,
-              left: -10,
-              position: "absolute",
-              top: 24,
-              transform: "translateY(-50%)",
-              width: 24,
-              zIndex: 2,
-              "&:hover": { background: "#f9fafb", borderColor: "#94a3b8" },
-            }}>
-            <ChevronLeftIcon sx={{ fontSize: 16 }} />
-          </IconButton>
-        )}
-        <Box
-          ref={carouselRef}
-          onScroll={handleScroll}
-          sx={{
-            display: "flex",
-            fontSize: 10,
-            gap: 1.5,
-            overflowX: "auto",
-            scrollSnapType: "x mandatory",
-            scrollbarWidth: "none",
-            "&::-webkit-scrollbar": { display: "none" },
-          }}>
-          <ShareButton
-            icon={<WhatsAppIcon fontSize="small" />}
-            label={t("whatsapp")}
-          />
-          <ShareButton
-            icon={<FacebookIcon fontSize="small" />}
-            label={t("facebook")}
-          />
-          <ShareButton
-            icon={<TelegramIcon fontSize="small" />}
-            label={t("telegram")}
-          />
-          <ShareButton
-            icon={<XIcon fontSize="small" />}
-            label="X"
-          />
-          <ShareButton
-            icon={<InstagramIcon fontSize="small" />}
-            label="Instagram"
-          />
-          <ShareButton
-            icon={<LinkedInIcon fontSize="small" />}
-            label="LinkedIn"
-          />
-          <ShareButton
-            icon={<RedditIcon fontSize="small" />}
-            label="Reddit"
-          />
-          <ShareButton
-            icon={<PinterestIcon fontSize="small" />}
-            label="Pinterest"
-          />
-          <ShareButton
-            icon={<MoreHorizIcon fontSize="small" />}
-            label={t("others")}
-          />
-        </Box>
-        {canScrollRight && (
-          <IconButton
-            aria-label="Scroll right"
-            onClick={() => scrollCarousel(1)}
-            size="small"
-            sx={{
-              background: "#fff",
-              border: "1px solid #e5e7eb",
-              borderRadius: "50%",
-              boxShadow: "0 1px 3px rgba(15, 23, 42, 0.08)",
-              color: "var(--sk-text)",
-              height: 24,
-              position: "absolute",
-              right: -10,
-              top: 24,
-              transform: "translateY(-50%)",
-              width: 24,
-              zIndex: 2,
-              "&:hover": { background: "#f9fafb", borderColor: "#94a3b8" },
-            }}>
-            <ChevronRightIcon sx={{ fontSize: 16 }} />
-          </IconButton>
-        )}
+          display: "flex",
+          gap: 1,
+          mb: 2,
+          overflowX: "auto",
+          pb: .5,
+          scrollbarWidth: "none",
+          "&::-webkit-scrollbar": { display: "none" },
+          "& > :nth-of-type(1) .share-icon": { background: "linear-gradient(145deg, #e6fff2, #c6f7df)", color: "#087b55" },
+          "& > :nth-of-type(2) .share-icon": { background: "linear-gradient(145deg, #edf4ff, #d9e8ff)", color: "#2466c9" },
+          "& > :nth-of-type(3) .share-icon": { background: "linear-gradient(145deg, #ebf8ff, #d7efff)", color: "#2583bc" },
+          "& > :nth-of-type(4) .share-icon": { background: "linear-gradient(145deg, #f4f4f5, #e7e7ea)", color: "#19151f" },
+          "& > :nth-of-type(5) .share-icon": { background: "linear-gradient(145deg, #fff0f6, #f3e5ff)", color: "#b02d87" },
+        }}
+      >
+        <ShareButton icon={<WhatsAppIcon />} label={t("whatsapp")} />
+        <ShareButton icon={<FacebookIcon />} label={t("facebook")} />
+        <ShareButton icon={<TelegramIcon />} label={t("telegram")} />
+        <ShareButton icon={<XIcon />} label="X" />
+        <ShareButton icon={<InstagramIcon />} label="Instagram" />
+        <ShareButton icon={<LinkedInIcon />} label="LinkedIn" />
+        <ShareButton icon={<RedditIcon />} label="Reddit" />
+        <ShareButton icon={<PinterestIcon />} label="Pinterest" />
+        <ShareButton icon={<MoreHorizIcon />} label={t("others")} />
       </Box>
       <SubmitButton fullWidth>{t("done")}</SubmitButton>
+      <Box aria-live="polite" sx={{ height: 0, overflow: "hidden" }}>{copied ? t("copied") : ""}</Box>
     </>
   );
 }
 
-function ShareButton({
-  icon,
-  label,
-  primary,
-}: {
-  icon: ReactNode;
-  label: string;
-  primary?: boolean;
-}) {
+function ShareButton({ icon, label }: { icon: ReactNode; label: string }) {
   return (
-    <Button
-      variant="text"
-      disableRipple
-      sx={{
-        alignItems: "center",
-        background: "transparent",
-        color: "#8b949e",
-        display: "flex",
-        flexDirection: "column",
-        flexShrink: 0,
-        fontSize: 11,
-        fontWeight: 400,
-        gap: 0.75,
-        lineHeight: 1,
-        letterSpacing: "0.01em",
-        minHeight: 64,
-        minWidth: 40,
-        padding: "4px 0",
-        scrollSnapAlign: "start",
-        textAlign: "center",
-        textTransform: "none",
-        width: 40,
-        "&:hover": {
-          background: "transparent",
-          "& .share-btn-icon": {
-            background: primary ? "var(--sk-secondary)" : "#f3f4f6",
-            borderColor: primary ? "var(--sk-secondary)" : "#cbd5e1",
-          },
-        },
-      }}>
-      <Box
-        className="share-btn-icon"
-        component="span"
-        sx={{
-          alignItems: "center",
-          background: primary ? "var(--sk-secondary)" : "#f9fafb",
-          border: "1px solid #e5e7eb",
-          borderColor: primary ? "var(--sk-secondary)" : "#e5e7eb",
-          borderRadius: "50%",
-          color: primary ? "#fff" : "#8b949e",
-          display: "inline-flex",
-          height: 40,
-          justifyContent: "center",
-          transition: "background 0.15s ease, border-color 0.15s ease",
-          width: 40,
-        }}>
-        {icon}
-      </Box>
-      <Box
-        component="span"
-        sx={{
-          maxWidth: 40,
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-          width: 40,
-        }}>
-        {label}
-      </Box>
+    <Button sx={{ color: "#746f7a", display: "flex", flex: "0 0 58px", flexDirection: "column", fontSize: 10.5, fontWeight: 500, gap: .6, minHeight: 64, minWidth: 58, p: .5, textTransform: "none" }}>
+      <Box className="share-icon" component="span" sx={{ alignItems: "center", bgcolor: "rgba(255,255,255,.88)", border: "1px solid rgba(25,21,31,.06)", borderRadius: "50%", boxShadow: "0 7px 18px rgba(46,37,72,.09)", color: "#35303b", display: "inline-flex", height: 38, justifyContent: "center", width: 38, "& svg": { fontSize: 19 } }}>{icon}</Box>
+      <Box component="span" sx={{ maxWidth: 58, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</Box>
     </Button>
   );
 }
 
 function DialogHeading({ text }: { text: string }) {
-  return (
-    <Typography
-      component="h3"
-      sx={{
-        color: "var(--sk-text)",
-        fontSize: 18,
-        fontWeight: 700,
-        letterSpacing: "-0.01em",
-        m: 0,
-        mb: 1.25,
-      }}>
-      {text}
-    </Typography>
-  );
+  return <Typography component="h3" id="share-dialog-title" sx={{ color: "#151219", fontSize: 28, fontWeight: 700, letterSpacing: "-.035em", lineHeight: 1.08, m: 0, mb: 1 }}>{text}</Typography>;
 }
 
-function FormActions({ children }: { children: React.ReactNode }) {
-  return (
-    <Box
-      sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gap: 1.25,
-        mt: 1.5,
-        "& > *:nth-of-type(1)": { gridColumn: "span 1" },
-        "& > *:nth-of-type(2)": { gridColumn: "span 2" },
-      }}>
-      {children}
-    </Box>
-  );
+function DialogCopy({ children }: { children: ReactNode }) {
+  return <Typography sx={{ color: "#746f7a", fontSize: 13.5, lineHeight: 1.5, mb: 2 }}>{children}</Typography>;
 }
 
-function CancelButton({ children }: { children: React.ReactNode }) {
-  return (
-    <Button
-      variant="outlined"
-      sx={{
-        border: "1px solid #d1d5db",
-        borderRadius: "8px",
-        color: "var(--sk-text)",
-        fontWeight: 500,
-        letterSpacing: "0.01em",
-        minHeight: 38,
-        padding: "8px 14px",
-        textTransform: "none",
-        "&:hover": { background: "#f9fafb", borderColor: "#9ca3af" },
-      }}>
-      {children}
-    </Button>
-  );
+function FormActions({ children }: { children: ReactNode }) {
+  return <Box sx={{ display: "grid", gap: 1.25, gridTemplateColumns: "1fr 2fr", mt: 1.5 }}>{children}</Box>;
 }
 
-function SubmitButton({
-  children,
-  disabled,
-  fullWidth,
-}: {
-  children: React.ReactNode;
-  disabled?: boolean;
-  fullWidth?: boolean;
-}) {
+function CancelButton({ children }: { children: ReactNode }) {
+  return <Button variant="text" sx={{ borderRadius: "12px", color: "#716b78", fontSize: 15, fontWeight: 500, minHeight: 46, textTransform: "none", "&:hover": { bgcolor: "rgba(31,27,38,.05)" } }}>{children}</Button>;
+}
+
+function SubmitButton({ children, disabled, fullWidth, state = "active" }: { children: ReactNode; disabled?: boolean; fullWidth?: boolean; state?: "active" | "loading" | "unavailable" }) {
+  const unavailable = state === "unavailable";
+  const loading = state === "loading";
   return (
     <Button
       variant="contained"
@@ -560,26 +257,33 @@ function SubmitButton({
       disableElevation
       fullWidth={fullWidth}
       sx={{
-        bgcolor: "var(--sk-secondary)",
-        borderRadius: "8px",
-        color: "#fff",
+        background: unavailable ? "#ececef" : "#0071e3",
+        border: "1px solid rgba(255,255,255,.25)",
+        borderRadius: "13px",
+        boxShadow: unavailable || loading ? "none" : "0 11px 26px rgba(0,113,227,.24), inset 0 1px 0 rgba(255,255,255,.18)",
+        color: unavailable ? "#8e8991" : "#fff",
+        fontSize: loading ? 12.5 : 15,
         fontWeight: 600,
-        letterSpacing: "0.01em",
-        minHeight: 38,
-        padding: "8px 14px",
+        minHeight: 46,
+        minWidth: 0,
         textTransform: "none",
-        lineHeight: 1,
-        "&:hover": {
-          bgcolor: "var(--sk-secondary)",
-          filter: "brightness(1.05)",
-        },
+        transition: "transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s cubic-bezier(.22,1,.36,1)",
+        whiteSpace: "nowrap",
+        "&:hover": { background: unavailable ? "#ececef" : "#0064c8", boxShadow: unavailable || loading ? "none" : "0 14px 32px rgba(0,113,227,.3)", transform: unavailable || loading ? "none" : "translateY(-1px)" },
         "&.Mui-disabled": {
-          bgcolor: "var(--sk-secondary)",
-          color: "#fff",
-          opacity: 0.5,
+          background: unavailable ? "#ececef" : "#0071e3",
+          boxShadow: "none",
+          color: unavailable ? "#8e8991" : "#fff",
+          opacity: unavailable ? 1 : .72,
         },
-      }}>
+        "&:focus-visible": { outline: "3px solid #73c8f2", outlineOffset: 2 },
+      }}
+    >
       {children}
     </Button>
   );
+}
+
+function alertStyles(background: string, color: string) {
+  return { bgcolor: background, border: `1px solid ${color}33`, borderRadius: "11px", color, fontSize: 12.5, lineHeight: 1.5, mb: 1.75 };
 }
