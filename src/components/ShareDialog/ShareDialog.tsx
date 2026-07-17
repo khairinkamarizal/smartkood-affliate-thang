@@ -232,7 +232,7 @@ function ShareButton({ icon, label }: { icon: ReactNode; label: string }) {
 }
 
 function DialogHeading({ text }: { text: string }) {
-  return <Typography component="h3" id="share-dialog-title" sx={{ color: "#151219", fontSize: 28, fontWeight: 700, letterSpacing: "-.035em", lineHeight: 1.08, m: 0, mb: 1 }}>{text}</Typography>;
+  return <Typography component="h3" id="share-dialog-title" sx={{ color: "#151219", fontSize: 28, fontWeight: 600, letterSpacing: "-.035em", lineHeight: 1.08, m: 0, mb: 1 }}>{text}</Typography>;
 }
 
 function DialogCopy({ children }: { children: ReactNode }) {

@@ -18,7 +18,7 @@ export function BalanceCallout({ amount, label }: BalanceCalloutProps) {
         textAlign: 'center',
       }}
     >
-      <Typography sx={{ color: '#047857', fontSize: 28, fontWeight: 700 }}>{amount}</Typography>
+      <Typography sx={{ color: '#047857', fontSize: 28, fontWeight: 600 }}>{amount}</Typography>
       <Typography
         sx={{
           color: '#047857',

@@ -65,7 +65,7 @@ export function AffiliateShareCard({ t }: AffiliateShareCardProps) {
 
           <Typography
             component="div"
-            sx={{ color: "#141118", fontSize: 30, fontWeight: 700, letterSpacing: "-.035em", lineHeight: 1.08 }}
+            sx={{ color: "#141118", fontSize: 30, fontWeight: 600, letterSpacing: "-.035em", lineHeight: 1.08 }}
           >
             <TitleWithAmount text={t("affiliateHeroTitle")} amount={amountLabel} />
           </Typography>
@@ -117,7 +117,7 @@ function TitleWithAmount({ text, amount }: { text: string; amount: string }) {
               background: "none",
               color: "#ff3b6b",
               display: "inline-block",
-              fontWeight: 700,
+              fontWeight: 600,
               lineHeight: 1,
               WebkitTextFillColor: "initial",
               whiteSpace: "nowrap",

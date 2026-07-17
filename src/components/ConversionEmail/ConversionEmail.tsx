@@ -78,7 +78,7 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
             padding: { xs: "23px 22px", sm: "27px 38px" },
           }}
         >
-          <Typography sx={{ color: "#fff", fontSize: 19, fontWeight: 700, letterSpacing: "-.025em" }}>
+          <Typography sx={{ color: "#fff", fontSize: 19, fontWeight: 600, letterSpacing: "-.025em" }}>
             smartaffiliate<Box component="span" sx={{ color: "#ffd60a" }}>.</Box>
           </Typography>
           <Box sx={{ alignItems: "center", display: "flex", gap: 1.25 }}>
@@ -106,7 +106,7 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
             id="email-newsletter-title"
             role="heading"
             aria-level={1}
-            sx={{ fontSize: { xs: 34, sm: 40 }, fontWeight: 700, letterSpacing: "-.04em", lineHeight: 1.06, m: "0 auto", maxWidth: 480 }}
+            sx={{ fontSize: { xs: 34, sm: 40 }, fontWeight: 600, letterSpacing: "-.04em", lineHeight: 1.06, m: "0 auto", maxWidth: 480 }}
           >
             <HighlightedText text={t("emailConvSubject")} highlight={amount} />
           </Typography>
@@ -147,7 +147,7 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
             }}
           >
             <Typography sx={{ color: "#75674f", fontSize: 12.5, fontWeight: 500 }}>{t("emailConvBalanceLabel")}</Typography>
-            <Typography sx={{ color: "#171419", fontSize: 32, fontWeight: 700, letterSpacing: "-.04em", lineHeight: 1 }}>RM {state.balance.toFixed(2)}</Typography>
+            <Typography sx={{ color: "#171419", fontSize: 32, fontWeight: 600, letterSpacing: "-.04em", lineHeight: 1 }}>RM {state.balance.toFixed(2)}</Typography>
           </Box>
 
           <Box sx={{ pt: 3, textAlign: "center" }}>

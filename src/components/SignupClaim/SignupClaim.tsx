@@ -62,17 +62,17 @@ export function SignupClaim({ state, t }: SignupClaimProps) {
           }}
         >
           <Box>
-            <Typography sx={{ color: '#0071e3', fontSize: 17, fontWeight: 700, letterSpacing: '-.025em', mb: 7 }}>
+            <Typography sx={{ color: '#0071e3', fontSize: 17, fontWeight: 600, letterSpacing: '-.025em', mb: 7 }}>
               smartaffiliate<Box component="span" sx={{ color: '#ff3b6b' }}>.</Box>
             </Typography>
-            <Typography component="div" role="heading" aria-level={1} sx={{ fontSize: { xs: 36, sm: 44 }, fontWeight: 700, letterSpacing: '-.04em', lineHeight: 1.05 }}>
+            <Typography component="div" role="heading" aria-level={1} sx={{ fontSize: { xs: 36, sm: 44 }, fontWeight: 600, letterSpacing: '-.04em', lineHeight: 1.05 }}>
               {t('signupWelcome')}
             </Typography>
             <Typography sx={{ color: '#69636d', fontSize: 15, lineHeight: 1.5, mt: 1.75 }}>{t('signupClaimSub')}</Typography>
           </Box>
           <Box sx={{ mt: 5 }}>
             <Typography sx={{ color: '#817b85', fontSize: 11, fontWeight: 600, letterSpacing: '.06em', textTransform: 'uppercase' }}>{t('signupBalanceLabel')}</Typography>
-            <Typography sx={{ fontSize: { xs: 44, sm: 54 }, fontWeight: 700, letterSpacing: '-.05em', lineHeight: 1, mt: 1 }}>RM {state.balance.toFixed(2)}</Typography>
+            <Typography sx={{ fontSize: { xs: 44, sm: 54 }, fontWeight: 600, letterSpacing: '-.05em', lineHeight: 1, mt: 1 }}>RM {state.balance.toFixed(2)}</Typography>
           </Box>
         </Box>
 
