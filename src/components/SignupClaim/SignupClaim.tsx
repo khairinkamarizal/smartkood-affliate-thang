@@ -19,10 +19,10 @@ export function SignupClaim({ state, t }: SignupClaimProps) {
         borderRadius: '8px',
         color: '#171419',
         display: 'flex',
-        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif',
+        fontFamily: 'Roboto, sans-serif',
         justifyContent: 'center',
-        minHeight: 620,
-        padding: { xs: 2, sm: 3.5 },
+        minHeight: 600,
+        padding: { xs: '16px', sm: '32px' },
       }}
     >
       <Box
@@ -56,23 +56,23 @@ export function SignupClaim({ state, t }: SignupClaimProps) {
             borderRight: { xs: 0, md: '1px solid #e7e6eb' },
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between',
-            minHeight: { xs: 260, md: 500 },
-            padding: { xs: '34px 28px', sm: '42px 38px' },
+            justifyContent: 'flex-start',
+            minHeight: { xs: 260, md: 480 },
+            padding: { xs: '32px 24px', sm: '40px' },
           }}
         >
           <Box>
-            <Typography sx={{ color: '#0071e3', fontSize: 17, fontWeight: 600, letterSpacing: '-.025em', mb: 7 }}>
+            <Typography sx={{ color: '#0071e3', fontSize: 17, fontWeight: 600, letterSpacing: '-.025em', mb: '48px' }}>
               smartaffiliate<Box component="span" sx={{ color: '#ff3b6b' }}>.</Box>
             </Typography>
             <Typography component="div" role="heading" aria-level={1} sx={{ fontSize: { xs: 36, sm: 44 }, fontWeight: 600, letterSpacing: '-.04em', lineHeight: 1.05 }}>
               {t('signupWelcome')}
             </Typography>
-            <Typography sx={{ color: '#69636d', fontSize: 15, lineHeight: 1.5, mt: 1.75 }}>{t('signupClaimSub')}</Typography>
+            <Typography sx={{ color: '#69636d', fontSize: 15, lineHeight: 1.5, mt: '16px' }}>{t('signupClaimSub')}</Typography>
           </Box>
-          <Box sx={{ mt: 5 }}>
+          <Box sx={{ mt: '56px' }}>
             <Typography sx={{ color: '#817b85', fontSize: 11, fontWeight: 600, letterSpacing: '.06em', textTransform: 'uppercase' }}>{t('signupBalanceLabel')}</Typography>
-            <Typography sx={{ fontSize: { xs: 44, sm: 54 }, fontWeight: 600, letterSpacing: '-.05em', lineHeight: 1, mt: 1 }}>RM {state.balance.toFixed(2)}</Typography>
+            <Typography sx={{ fontSize: { xs: 44, sm: 54 }, fontWeight: 600, letterSpacing: '-.05em', lineHeight: 1, mt: '8px' }}>RM {state.balance.toFixed(2)}</Typography>
           </Box>
         </Box>
 
@@ -86,7 +86,7 @@ export function SignupClaim({ state, t }: SignupClaimProps) {
             '--sk-text': '#171419',
             '--sk-text-dim': '#68626c',
             alignSelf: 'center',
-            padding: { xs: '34px 28px 38px', sm: '44px 48px' },
+            padding: { xs: '32px 24px', sm: '40px 48px' },
             '& input': { borderRadius: '11px', minHeight: 46 },
             '& input:focus': { boxShadow: '0 0 0 3px rgba(0,113,227,.14)' },
           }}
@@ -113,7 +113,7 @@ export function SignupClaim({ state, t }: SignupClaimProps) {
               fontSize: 15,
               fontWeight: 600,
               minHeight: 46,
-              mt: .75,
+              mt: 0,
               textTransform: 'none',
               '&:hover': { background: '#0064c8', boxShadow: '0 13px 28px rgba(0,113,227,.3)', transform: 'translateY(-1px)' },
               '&:focus-visible': { outline: '3px solid #73c8f2', outlineOffset: 3 },

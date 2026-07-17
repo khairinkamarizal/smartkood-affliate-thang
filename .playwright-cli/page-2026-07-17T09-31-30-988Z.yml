@@ -1,0 +1,95 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - heading "Affiliate Widget - Wireframes" [level=1] [ref=f1e5]
+    - paragraph [ref=f1e6]: 2026-05-07 design (replaces 260506)
+    - heading "Screen" [level=2] [ref=f1e7]
+    - generic [ref=f1e8]:
+      - button "01SK landing page with card consumer view" [ref=f1e9] [cursor=pointer]:
+        - generic [ref=f1e10]: 01SK landing page with card
+        - generic [ref=f1e11]: consumer view
+      - 'button "02Share dialog: email entry pop-up state 1" [ref=f1e12] [cursor=pointer]':
+        - generic [ref=f1e13]: "02Share dialog: email entry"
+        - generic [ref=f1e14]: pop-up state 1
+      - 'button "03Share dialog: submitting pop-up state 2" [ref=f1e15] [cursor=pointer]':
+        - generic [ref=f1e16]: "03Share dialog: submitting"
+        - generic [ref=f1e17]: pop-up state 2
+      - 'button "04Share dialog: success pop-up state 3 (link revealed)" [active] [ref=f1e18] [cursor=pointer]':
+        - generic [ref=f1e19]: "04Share dialog: success"
+        - generic [ref=f1e20]: pop-up state 3 (link revealed)
+      - 'button "05Share dialog: rate limited pop-up error state" [ref=f1e21] [cursor=pointer]':
+        - generic [ref=f1e22]: "05Share dialog: rate limited"
+        - generic [ref=f1e23]: pop-up error state
+      - 'button "06Share dialog: token revoked pop-up error state" [ref=f1e24] [cursor=pointer]':
+        - generic [ref=f1e25]: "06Share dialog: token revoked"
+        - generic [ref=f1e26]: pop-up error state
+      - button "07Conversion email - stub user sign-up CTA" [ref=f1e27] [cursor=pointer]:
+        - generic [ref=f1e28]: 07Conversion email - stub user
+        - generic [ref=f1e29]: sign-up CTA
+      - button "08Conversion email - real user sign-in CTA" [ref=f1e30] [cursor=pointer]:
+        - generic [ref=f1e31]: 08Conversion email - real user
+        - generic [ref=f1e32]: sign-in CTA
+      - button "09SA signup landing (claim) after clicking email link" [ref=f1e33] [cursor=pointer]:
+        - generic [ref=f1e34]: 09SA signup landing (claim)
+        - generic [ref=f1e35]: after clicking email link
+    - heading "Locale" [level=2] [ref=f1e36]
+    - group [ref=f1e37]:
+      - button "EN" [pressed] [ref=f1e38] [cursor=pointer]
+      - button "MS" [ref=f1e39] [cursor=pointer]
+      - button "ZH" [ref=f1e40] [cursor=pointer]
+    - heading "State" [level=2] [ref=f1e41]
+    - generic [ref=f1e42]:
+      - generic [ref=f1e43]: Pending balance
+      - slider [ref=f1e48]: "40"
+      - generic [ref=f1e49]: RM 42.00
+    - generic [ref=f1e50]:
+      - generic [ref=f1e51]: Commission rate
+      - slider [ref=f1e56]: "5"
+      - generic [ref=f1e57]: 5%
+    - generic [ref=f1e58]:
+      - generic [ref=f1e59]: Last conversion (RM)
+      - slider [ref=f1e64]: "20"
+      - generic [ref=f1e65]: RM 22.00
+  - main [ref=f1e66]:
+    - region "Selected wireframe screen" [ref=f1e67]:
+      - generic [ref=f1e68]:
+        - generic [ref=f1e69]:
+          - generic [ref=f1e70]: SK latest
+          - generic [ref=f1e72]: "Share dialog: success"
+        - generic [ref=f1e128]:
+          - generic [ref=f1e129]: SmartKood landing page (background dimmed)
+          - dialog [ref=f1e135]:
+            - heading "Your share link is ready" [level=3] [ref=f1e136]
+            - alert [ref=f1e137]:
+              - generic [ref=f1e138]: You'll earn 5% on every purchase
+            - generic [ref=f1e139]:
+              - code [ref=f1e140]: https://buyer.smartaffiliate.com/shop/products/aerolite-3000?ref=AKLR8MX2
+              - button [ref=f1e141] [cursor=pointer]
+            - paragraph [ref=f1e145]: We'll email aishah@example.com when someone buys.
+            - generic [ref=f1e146]:
+              - generic [ref=f1e147]:
+                - button "WhatsApp" [ref=f1e148] [cursor=pointer]
+                - button "Facebook" [ref=f1e153] [cursor=pointer]
+                - button "Telegram" [ref=f1e158] [cursor=pointer]
+                - button "X" [ref=f1e163] [cursor=pointer]
+                - button "Instagram" [ref=f1e168] [cursor=pointer]
+                - button "LinkedIn" [ref=f1e173] [cursor=pointer]
+                - button "Reddit" [ref=f1e178] [cursor=pointer]
+                - button "Pinterest" [ref=f1e183] [cursor=pointer]
+                - button "See all" [ref=f1e188] [cursor=pointer]
+              - button "See all" [ref=f1e193] [cursor=pointer]
+            - button "Done" [ref=f1e196] [cursor=pointer]
+  - complementary "Component handoff" [ref=f1e101]:
+    - generic [ref=f1e102]:
+      - generic [ref=f1e103]:
+        - heading "Component handoff" [level=2] [ref=f1e104]
+        - paragraph [ref=f1e105]: ShareDialog
+      - generic [ref=f1e106]: v1.0
+    - tablist "Handoff code panes" [ref=f1e109]:
+      - tab "AI Prompt" [selected] [ref=f1e110] [cursor=pointer]
+      - tab "HTML" [ref=f1e111] [cursor=pointer]
+      - tab "CSS" [ref=f1e112] [cursor=pointer]
+    - generic [ref=f1e113]:
+      - generic [ref=f1e114]: PROMPT.md
+      - button [ref=f1e115] [cursor=pointer]
+    - code [ref=f1e120]: "Create a mobile-first affiliate share flow as an iPhone-style bottom sheet. Visual direction: vibrant Apple-inspired commerce: crisp, minimal, high-chroma, and never cartoonish or generic AI. Use solid Apple blue #0071e3 for actions, vivid coral #ff3b6b for earned-value emphasis, and controlled cyan #5ac8fa and tangerine #ff9f0a accents. Surfaces are clean white or cool gray, borders are 1px, and shadows are soft. Use Roboto everywhere with a strict optical hierarchy: display headlines and controls at 600, labels at 500–600, and body copy at 400. Never exceed font-weight 600; create hierarchy through scale, spacing, and color. Use a deliberate 4px spacing base with primary gaps of 8, 12, 16, 20, 24, 32, and 48px. Keep gradients limited to thin spectrum rails and diffused background light. Never use gradient buttons, purple wash, glassmorphism overload, thick black outlines, or floating blobs. Support initial, submitting, success, rate-limited, and revoked states. Submitting uses an Apple-blue button at 72% opacity with a spinner and no hover. Rate-limited uses a flat neutral-gray disabled button with no shadow. In success, show sharing platforms in a horizontal rail with a visible right-edge arrow and fade so overflow is discoverable; the arrow scrolls the rail and remains keyboard accessible. Keep labels associated, announce copy success with aria-live, and keep the sheet anchored to the bottom with a 28px top radius."
+    - generic "Apple-inspired vibrant design palette" [ref=f1e121]

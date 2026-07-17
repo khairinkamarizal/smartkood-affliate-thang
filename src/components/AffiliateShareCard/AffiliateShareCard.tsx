@@ -25,8 +25,7 @@ export function AffiliateShareCard({ t }: AffiliateShareCardProps) {
         border: "1px solid rgba(25,21,31,.1)",
         borderRadius: "22px",
         boxShadow: "0 22px 52px rgba(22,54,86,.15), inset 0 1px 0 rgba(255,255,255,.9)",
-        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif',
-        mb: 2,
+        fontFamily: 'Roboto, sans-serif',
         overflow: "hidden",
         position: "relative",
         "&::before": {
@@ -41,8 +40,8 @@ export function AffiliateShareCard({ t }: AffiliateShareCardProps) {
         },
       }}
     >
-      <Stack spacing={3.25} sx={{ p: 2.75, position: "relative" }}>
-        <Stack spacing={1.5}>
+      <Stack spacing="24px" sx={{ p: "24px", position: "relative" }}>
+        <Stack spacing="12px">
           <Chip
             icon={<HandshakeIcon />}
             label={t("affiliateBadge")}
@@ -75,7 +74,7 @@ export function AffiliateShareCard({ t }: AffiliateShareCardProps) {
           </Typography>
         </Stack>
 
-        <Box sx={{ borderTop: "1px solid rgba(25,21,31,.09)", pt: 2.5 }}>
+        <Box sx={{ borderTop: "1px solid rgba(25,21,31,.09)", pt: "20px" }}>
           <Button
             fullWidth
             variant="contained"

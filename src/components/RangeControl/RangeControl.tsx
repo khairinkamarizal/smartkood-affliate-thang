@@ -28,9 +28,9 @@ export function RangeControl({
         color: 'var(--text-dim)',
         display: 'flex',
         fontSize: 11,
-        gap: 1,
+        gap: '8px',
         justifyContent: 'space-between',
-        py: 0.875,
+        py: '8px',
       }}
     >
       <Typography component="span" sx={{ minWidth: 116, fontSize: 11, color: 'var(--text-dim)' }}>

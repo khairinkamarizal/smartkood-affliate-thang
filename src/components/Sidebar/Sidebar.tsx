@@ -83,7 +83,7 @@ export function Sidebar({ screens, state, setState }: SidebarProps) {
                       : "var(--text-dim)",
                     fontFamily: "var(--mono)",
                     fontSize: 10,
-                    mr: 0.75,
+                    mr: "8px",
                   }}>
                   {String(index + 1).padStart(2, "0")}
                 </Box>
@@ -99,7 +99,7 @@ export function Sidebar({ screens, state, setState }: SidebarProps) {
                   color: active ? "rgba(255,255,255,0.82)" : "var(--text-dim)",
                   display: "block",
                   fontSize: 10,
-                  mt: 0.25,
+                  mt: "4px",
                 }}>
                 {screen.meta}
               </Box>

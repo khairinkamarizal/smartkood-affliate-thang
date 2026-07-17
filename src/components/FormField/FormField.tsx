@@ -10,7 +10,7 @@ type FormFieldProps = {
 
 export function FormField({ label, children, htmlFor }: FormFieldProps) {
   return (
-    <Box sx={{ mb: 1.75 }}>
+    <Box sx={{ mb: "20px" }}>
       <Typography
         component="label"
         htmlFor={htmlFor}
@@ -19,7 +19,7 @@ export function FormField({ label, children, htmlFor }: FormFieldProps) {
           display: "block",
           fontSize: 13,
           fontWeight: 500,
-          mb: 0.75,
+          mb: "8px",
         }}>
         {label}
       </Typography>

@@ -16,7 +16,7 @@ export function ProductCard({ t }: ProductCardProps) {
         background: 'var(--sk-bg)',
         border: '1px solid var(--sk-border)',
         borderRadius: '8px',
-        mb: 1.75,
+        mb: '16px',
       }}
     >
       <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
@@ -32,14 +32,14 @@ export function ProductCard({ t }: ProductCardProps) {
             fontFamily: 'var(--mono)',
             fontSize: 11,
             justifyContent: 'center',
-            mb: 1.5,
+            mb: '12px',
           }}
         >
           [product image]
         </Box>
-        <Typography sx={{ fontSize: 16, fontWeight: 500, mb: 0.5 }}>{t('productName')}</Typography>
+        <Typography sx={{ fontSize: 16, fontWeight: 500, mb: '4px' }}>{t('productName')}</Typography>
         <Typography
-          sx={{ color: 'var(--sk-primary)', fontSize: 18, fontWeight: 600, mb: 0.75 }}
+          sx={{ color: 'var(--sk-primary)', fontSize: 18, fontWeight: 600, mb: '8px' }}
         >
           {t('productPrice')}
         </Typography>

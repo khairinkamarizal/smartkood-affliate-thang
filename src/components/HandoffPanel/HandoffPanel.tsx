@@ -58,7 +58,7 @@ function getArtifact(screen: ScreenId): Artifact {
   return signupArtifact
 }
 
-const sharedBrief = `Visual direction: vibrant Apple-inspired commerce: crisp, minimal, high-chroma, and never cartoonish or generic AI. Use solid Apple blue #0071e3 for actions, vivid coral #ff3b6b for earned-value emphasis, and controlled cyan #5ac8fa and tangerine #ff9f0a accents. Surfaces are clean white or cool gray, borders are 1px, and shadows are soft. Use an SF Pro/system stack with a strict optical hierarchy: display headlines and controls at 600, labels at 500–600, and body copy at 400. Never exceed font-weight 600; create hierarchy through scale, spacing, and color. Keep gradients limited to thin spectrum rails and diffused background light. Never use gradient buttons, purple wash, glassmorphism overload, thick black outlines, or floating blobs.`
+const sharedBrief = `Visual direction: vibrant Apple-inspired commerce: crisp, minimal, high-chroma, and never cartoonish or generic AI. Use solid Apple blue #0071e3 for actions, vivid coral #ff3b6b for earned-value emphasis, and controlled cyan #5ac8fa and tangerine #ff9f0a accents. Surfaces are clean white or cool gray, borders are 1px, and shadows are soft. Use Roboto everywhere with a strict optical hierarchy: display headlines and controls at 600, labels at 500–600, and body copy at 400. Never exceed font-weight 600; create hierarchy through scale, spacing, and color. Use a deliberate 4px spacing base with primary gaps of 8, 12, 16, 20, 24, 32, and 48px. Keep gradients limited to thin spectrum rails and diffused background light. Never use gradient buttons, purple wash, glassmorphism overload, thick black outlines, or floating blobs.`
 
 const cardArtifact: Artifact = {
   name: 'AffiliateShareCard',
@@ -70,7 +70,7 @@ const cardArtifact: Artifact = {
   <button type="button">Start earning now <span aria-hidden="true">→</span></button>
 </section>`,
   css: `.affiliate-card {
-  position: relative; overflow: hidden; padding: 22px;
+  position: relative; overflow: hidden; padding: 24px;
   border: 1px solid rgba(29,37,39,.10); border-radius: 22px;
   background: radial-gradient(circle at 12% 0%, rgba(117,185,214,.42), transparent 36%),
     radial-gradient(circle at 100% 18%, rgba(229,111,99,.28), transparent 34%), #fff;
@@ -79,17 +79,17 @@ const cardArtifact: Artifact = {
 .affiliate-card::before { content:""; position:absolute; inset:0 24px auto; height:3px;
   background:linear-gradient(90deg,#5ac8fa,#0071e3 34%,#ff3b6b 68%,#ff9f0a); }
 .affiliate-badge { display:inline-block; padding:7px 11px; border-radius:999px; background:rgba(255,255,255,.72); font-weight:600; font-size:11.5px; }
-.affiliate-card h2 { margin:14px 0 10px; font:600 30px/1.08 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; letter-spacing:-.035em; color:#171d1f; }
+.affiliate-card h2 { margin:12px 0; font:600 30px/1.08 Roboto,sans-serif; letter-spacing:-.035em; color:#171d1f; }
 .affiliate-card h2 strong { color:#ff3b6b; }
-.affiliate-card p { color:#646b6c; font:500 12.5px/1.58 system-ui; }
-.affiliate-card button { width:100%; min-height:48px; margin-top:22px; border:0; border-radius:13px; background:#0071e3; color:white; font-size:15px; font-weight:600; }
+.affiliate-card p { color:#646b6c; font:400 13.5px/1.5 Roboto,sans-serif; }
+.affiliate-card button { width:100%; min-height:48px; margin-top:24px; border:0; border-radius:13px; background:#0071e3; color:white; font-size:15px; font-weight:600; }
 .affiliate-card button:hover { background:#0064c8; }
 .affiliate-card button:focus-visible { outline:3px solid #5ac8fa; outline-offset:3px; }`,
 }
 
 const dialogArtifact: Artifact = {
   name: 'ShareDialog',
-  prompt: `Create a mobile-first affiliate share flow as an iPhone-style bottom sheet. ${sharedBrief}\n\nSupport initial, submitting, success, rate-limited, and revoked states. Submitting uses an Apple-blue button at 72% opacity with a spinner and no hover. Rate-limited uses a flat neutral-gray disabled button with no shadow. Keep labels associated, announce copy success with aria-live, and keep the sheet anchored to the bottom with a 28px top radius.`,
+  prompt: `Create a mobile-first affiliate share flow as an iPhone-style bottom sheet. ${sharedBrief}\n\nSupport initial, submitting, success, rate-limited, and revoked states. Submitting uses an Apple-blue button at 72% opacity with a spinner and no hover. Rate-limited uses a flat neutral-gray disabled button with no shadow. In success, show sharing platforms in a horizontal rail with a visible right-edge arrow and fade so overflow is discoverable; the arrow scrolls the rail and remains keyboard accessible. Keep labels associated, announce copy success with aria-live, and keep the sheet anchored to the bottom with a 28px top radius.`,
   html: `<div class="sheet-backdrop">
   <section class="share-sheet" role="dialog" aria-modal="true" aria-labelledby="share-title">
     <span class="sheet-handle" aria-hidden="true"></span>
@@ -98,19 +98,22 @@ const dialogArtifact: Artifact = {
     <label for="share-email">Your email address</label>
     <input id="share-email" type="email" value="aishah@example.com">
     <div class="actions"><button class="quiet">Cancel</button><button class="primary">Get my link</button></div>
+    <!-- Success state -->
+    <div class="share-rail-wrap"><div class="share-rail"><button>WhatsApp</button><button>Facebook</button><button>Telegram</button><button>More</button></div><button class="share-next" aria-label="See more sharing platforms">›</button></div>
   </section>
 </div>`,
   css: `.sheet-backdrop { position:relative; min-height:650px; background:rgba(17,24,25,.42); }
 .share-sheet { position:absolute; inset:auto 0 0; padding:20px 20px 24px; border-radius:28px 28px 0 0;
   background:rgba(255,255,255,.96); box-shadow:0 -24px 64px rgba(28,44,46,.22); color:#171d1f; }
-.sheet-handle { display:block; width:44px; height:4px; margin:-8px auto 20px; border-radius:99px;
+.sheet-handle { display:block; width:44px; height:4px; margin:-4px auto 20px; border-radius:99px;
   background:linear-gradient(90deg,#5ac8fa,#0071e3 34%,#ff3b6b 68%,#ff9f0a); }
-.share-sheet h2 { margin:0 0 8px; font:600 28px/1.08 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; letter-spacing:-.035em; }
-.share-sheet label { display:block; margin:18px 0 7px; color:#686f70; font:600 12px system-ui; }
-.share-sheet input { width:100%; min-height:46px; padding:0 12px; border:1px solid #d9ddde; border-radius:11px; background:#f5f7f7; }
-.actions { display:grid; grid-template-columns:1fr 2fr; gap:10px; margin-top:16px; }
+.share-sheet h2 { margin:0 0 8px; font:600 28px/1.08 Roboto,sans-serif; letter-spacing:-.035em; }
+.share-sheet label { display:block; margin:20px 0 8px; color:#686f70; font:500 13px Roboto,sans-serif; }
+.share-sheet input { width:100%; min-height:44px; padding:0 12px; border:1px solid #d9ddde; border-radius:11px; background:#f5f7f7; }
+.actions { display:grid; grid-template-columns:1fr 2fr; gap:12px; margin-top:20px; }
 .actions button { min-height:46px; border:0; border-radius:12px; font-size:15px; font-weight:600; }
 .primary { background:#0071e3; color:white; }.quiet { background:transparent; color:#727879; }
+.share-rail-wrap { position:relative; }.share-rail { display:flex; gap:8px; overflow-x:auto; padding-right:48px; scrollbar-width:none; }.share-next { position:absolute; top:4px; right:0; width:40px; height:40px; border:1px solid #dfe3e8; border-radius:50%; background:#fff; color:#0071e3; box-shadow:0 8px 22px rgba(22,54,86,.18); }
 .primary:disabled[data-state="loading"] { opacity:.72; }.primary:disabled[data-state="rate"] { background:#eceeef; color:#8e9394; opacity:1; }`,
 }
 
@@ -127,9 +130,9 @@ const emailArtifact: Artifact = {
   </main>
   <footer><b>SmartAffiliate · SmartKood</b><p>You're receiving this because someone shared an affiliate link from this email address.</p></footer>
 </article>`,
-  css: `.reward-email { max-width:600px; margin:auto; overflow:hidden; border:1px solid #e2e5e5; border-radius:22px; background:#fff; box-shadow:0 24px 60px rgba(33,45,46,.10); color:#171d1f; font-family:system-ui; }
+  css: `.reward-email { max-width:600px; margin:auto; overflow:hidden; border:1px solid #e2e5e5; border-radius:22px; background:#fff; box-shadow:0 24px 60px rgba(33,45,46,.10); color:#171d1f; font-family:Roboto,sans-serif; }
 .reward-email::before { content:""; display:block; height:3px; background:linear-gradient(90deg,#5ac8fa,#0071e3 34%,#ff3b6b 68%,#ff9f0a); }
-.reward-email header { display:flex; justify-content:space-between; padding:26px 38px; background:#0071e3; color:#fff; }.reward-email header i { color:#ffd60a; font-style:normal; }
+.reward-email header { display:flex; justify-content:space-between; padding:24px 32px; background:#0071e3; color:#fff; }.reward-email header i { color:#ffd60a; font-style:normal; }
 .reward-email main { padding:48px; text-align:center; border-block:1px solid #eceeee; }.reward-email h1 { margin:12px auto 20px; max-width:470px; font-size:40px; font-weight:600; line-height:1.06; letter-spacing:-.04em; }.reward-email h1 em { color:#ff3b6b; font-style:normal; }
 .reward-email dl { margin:32px 0 26px; text-align:left; }.reward-email dl div { display:flex; justify-content:space-between; padding:18px 0; border-bottom:1px solid #e8ebeb; }.reward-email dd { margin:0; font-weight:600; }
 .email-cta { display:inline-flex; padding:14px 20px; border-radius:12px; background:#0071e3; color:#fff; text-decoration:none; font-size:14px; font-weight:600; }
@@ -148,10 +151,10 @@ const signupArtifact: Artifact = {
     <button>Create account &amp; claim →</button>
   </form>
 </main>`,
-  css: `.claim-page { display:grid; grid-template-columns:.88fr 1.12fr; max-width:820px; margin:auto; overflow:hidden; border:1px solid #e1e5e5; border-radius:24px; background:#fff; box-shadow:0 28px 70px rgba(33,45,46,.12); font-family:system-ui; }
-.claim-summary { display:flex; min-height:500px; flex-direction:column; justify-content:space-between; padding:42px 38px; background:radial-gradient(circle at 0 0,rgba(117,185,214,.3),transparent 45%),radial-gradient(circle at 100% 100%,rgba(229,111,99,.18),transparent 44%),#f8f9f9; }
-.claim-summary h1 { margin:56px 0 8px; font-size:44px; font-weight:600; line-height:1.05; letter-spacing:-.04em; }.claim-summary strong { display:block; margin-top:8px; font-size:54px; font-weight:600; letter-spacing:-.05em; }
-.claim-form { align-self:center; padding:44px 48px; }.claim-form label { display:block; margin-bottom:16px; color:#686f70; font-size:13px; font-weight:500; }.claim-form input { display:block; width:100%; min-height:46px; margin-top:7px; border:1px solid #d9ddde; border-radius:11px; background:#f5f7f7; font-size:15px; }
+  css: `.claim-page { display:grid; grid-template-columns:.88fr 1.12fr; max-width:820px; margin:auto; overflow:hidden; border:1px solid #e1e5e5; border-radius:24px; background:#fff; box-shadow:0 28px 70px rgba(33,45,46,.12); font-family:Roboto,sans-serif; }
+.claim-summary { display:flex; min-height:480px; flex-direction:column; padding:40px; background:radial-gradient(circle at 0 0,rgba(117,185,214,.3),transparent 45%),radial-gradient(circle at 100% 100%,rgba(229,111,99,.18),transparent 44%),#f8f9f9; }
+.claim-summary h1 { margin:48px 0 0; font-size:44px; font-weight:600; line-height:1.05; letter-spacing:-.04em; }.claim-summary p { margin:16px 0 0; }.claim-summary small { margin-top:56px; }.claim-summary strong { display:block; margin-top:8px; font-size:54px; font-weight:600; letter-spacing:-.05em; }
+.claim-form { align-self:center; padding:40px 48px; }.claim-form label { display:block; margin-bottom:20px; color:#686f70; font-size:13px; font-weight:500; }.claim-form input { display:block; width:100%; min-height:46px; margin-top:8px; border:1px solid #d9ddde; border-radius:11px; background:#f5f7f7; font-size:15px; }
 .claim-form button { width:100%; min-height:46px; border:0; border-radius:12px; background:#0071e3; color:#fff; font-size:15px; font-weight:600; }
 @media(max-width:700px){.claim-page{grid-template-columns:1fr}.claim-summary{min-height:260px}}`,
 }

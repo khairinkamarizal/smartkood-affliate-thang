@@ -12,7 +12,7 @@
   --accent-2: #58a6ff;
   --warn: #f59e0b;
   --danger: #ef4444;
-  --mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace;
+  --mono: Roboto, sans-serif;
 
   /* SmartKood (sk) palette */
   --sk-primary: #3a4d54;
@@ -36,14 +36,7 @@
   background: var(--bg);
   color: var(--text);
   display: grid;
-  font:
-    13px/1.5 "SF Pro Text",
-    "SF Pro Display",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    system-ui,
-    sans-serif;
+  font: 13px/1.5 Roboto, sans-serif;
   grid-template-columns: 320px minmax(0, 1fr) 390px;
   height: 100svh;
   overflow: hidden;
@@ -108,19 +101,19 @@
 }
 
 .handoff-titlebar { align-items: flex-start; display: flex; justify-content: space-between; margin-bottom: 16px; }
-.wireframe-app .handoff-titlebar h2 { color: #f4f8f8; font-size: 16px; letter-spacing: -.02em; margin: 0 0 3px; text-transform: none; }
+.wireframe-app .handoff-titlebar h2 { color: #f4f8f8; font-size: 16px; letter-spacing: -.02em; margin: 0 0 4px; text-transform: none; }
 .handoff-titlebar p { color: #8f9b9c; font: 10px var(--mono); margin: 0; }
-.handoff-titlebar > span { border: 1px solid #364142; border-radius: 6px; color: #8fa0a1; font: 9px var(--mono); padding: 3px 6px; }
-.handoff-sidebar .MuiTabs-root { border: 1px solid #2c3637; border-radius: 9px; min-height: 38px; }
-.handoff-sidebar .MuiTab-root { color: #839091; font-size: 9px; min-height: 38px; padding: 7px 3px; }
+.handoff-titlebar > span { border: 1px solid #364142; border-radius: 6px; color: #8fa0a1; font: 9px var(--mono); padding: 4px 8px; }
+.handoff-sidebar .MuiTabs-root { border: 1px solid #2c3637; border-radius: 9px; min-height: 40px; }
+.handoff-sidebar .MuiTab-root { color: #839091; font-size: 9px; min-height: 40px; padding: 8px 4px; }
 .handoff-sidebar .MuiTab-root.Mui-selected { color: #f0f5f5; }
 .handoff-sidebar .MuiTabs-indicator { background: #75b9d6; height: 2px; }
-.editor-toolbar { align-items: center; background: #192021; border: 1px solid #2c3637; border-bottom: 0; border-radius: 9px 9px 0 0; display: flex; justify-content: space-between; margin-top: 14px; padding: 5px 7px 5px 12px; }
+.editor-toolbar { align-items: center; background: #192021; border: 1px solid #2c3637; border-bottom: 0; border-radius: 9px 9px 0 0; display: flex; justify-content: space-between; margin-top: 16px; padding: 4px 8px 4px 12px; }
 .editor-toolbar > span { color: #738082; font: 9px var(--mono); }
-.editor-toolbar .MuiButton-root { color: #cbd4d4; font-size: 9px; min-height: 30px; padding: 3px 7px; text-transform: none; }
-.code-editor { background: #0b0f10; border: 1px solid #2c3637; border-radius: 0 0 9px 9px; color: #d5dddd; font: 10px/1.65 var(--mono); margin: 0; min-height: 0; overflow: auto; padding: 15px; white-space: pre-wrap; }
+.editor-toolbar .MuiButton-root { color: #cbd4d4; font-size: 9px; min-height: 32px; padding: 4px 8px; text-transform: none; }
+.code-editor { background: #0b0f10; border: 1px solid #2c3637; border-radius: 0 0 9px 9px; color: #d5dddd; font: 10px/1.65 var(--mono); margin: 0; min-height: 0; overflow: auto; padding: 16px; white-space: pre-wrap; }
 .handoff-live { height: 0; overflow: hidden; position: absolute; width: 0; }
-.palette-strip { display: grid; gap: 5px; grid-template-columns: repeat(5, 1fr); margin-top: 14px; }
+.palette-strip { display: grid; gap: 8px; grid-template-columns: repeat(5, 1fr); margin-top: 16px; }
 .palette-strip span { border: 1px solid rgba(255,255,255,.1); border-radius: 4px; height: 8px; }
 
 @media (max-width: 1280px) {

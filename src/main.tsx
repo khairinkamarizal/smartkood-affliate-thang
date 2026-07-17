@@ -5,7 +5,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 import "./index.css";
 import App from "./App.tsx";
 
-const theme = createTheme();
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Roboto, sans-serif',
+  },
+});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

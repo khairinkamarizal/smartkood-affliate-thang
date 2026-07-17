@@ -22,8 +22,8 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
       sx={{
         background: "radial-gradient(circle at 8% 8%, rgba(90,200,250,.18), transparent 28%), radial-gradient(circle at 92% 92%, rgba(255,59,107,.12), transparent 30%), #f5f5f7",
         borderRadius: "8px",
-        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif',
-        padding: { xs: 1.5, sm: 2.5 },
+        fontFamily: 'Roboto, sans-serif',
+        padding: { xs: '12px', sm: '20px' },
       }}
     >
       <Box
@@ -75,14 +75,14 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
             background: "#0071e3",
             display: "flex",
             justifyContent: "space-between",
-            padding: { xs: "23px 22px", sm: "27px 38px" },
+            padding: { xs: "20px", sm: "24px 32px" },
           }}
         >
           <Typography sx={{ color: "#fff", fontSize: 19, fontWeight: 600, letterSpacing: "-.025em" }}>
             smartaffiliate<Box component="span" sx={{ color: "#ffd60a" }}>.</Box>
           </Typography>
-          <Box sx={{ alignItems: "center", display: "flex", gap: 1.25 }}>
-            <Box aria-hidden="true" sx={{ display: "flex", gap: .5 }}>
+          <Box sx={{ alignItems: "center", display: "flex", gap: "12px" }}>
+            <Box aria-hidden="true" sx={{ display: "flex", gap: "4px" }}>
               <span style={{ background: '#64d2ff', borderRadius: '50%', height: 8, width: 8 }} />
               <span style={{ background: '#ff375f', borderRadius: '50%', height: 8, width: 8 }} />
               <span style={{ background: '#ffd60a', borderRadius: '50%', height: 8, width: 8 }} />
@@ -96,11 +96,11 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
             background:
               "radial-gradient(circle at 4% 0%, rgba(90,200,250,.62), transparent 43%), radial-gradient(circle at 100% 18%, rgba(255,59,107,.42), transparent 40%), radial-gradient(circle at 52% 118%, rgba(255,159,10,.38), transparent 42%), #fff",
             borderBlock: "1px solid #ececf0",
-            padding: { xs: "42px 24px 38px", sm: "52px 48px 46px" },
+            padding: { xs: "40px 24px", sm: "48px" },
             textAlign: "center",
           }}
         >
-          <Typography sx={{ color: "#77717b", fontSize: 14, mb: 1.5 }}>{t("emailConvHello")}</Typography>
+          <Typography sx={{ color: "#77717b", fontSize: 14, mb: "12px" }}>{t("emailConvHello")}</Typography>
           <Typography
             component="div"
             id="email-newsletter-title"
@@ -115,21 +115,21 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
           </Typography>
         </Box>
 
-        <Box sx={{ padding: { xs: "30px 24px 34px", sm: "38px 48px 42px" } }}>
+        <Box sx={{ padding: { xs: "32px 24px 40px", sm: "32px 48px 40px" } }}>
           <Box
             sx={{
               background: "#f2f8fc",
               border: "1px solid #dceaf1",
               borderRadius: "14px",
               display: "grid",
-              gap: 2,
+              gap: "16px",
               gridTemplateColumns: "minmax(0,1fr) auto",
-              padding: "18px 20px",
+              padding: "16px 20px",
             }}
           >
             <Box sx={{ minWidth: 0 }}>
               <Typography sx={{ color: "#171419", fontSize: 14, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{t("productName")}</Typography>
-              <Typography sx={{ color: "#8a848e", fontSize: 11.5, mt: .6 }}>{t("earnRate")}</Typography>
+              <Typography sx={{ color: "#8a848e", fontSize: 11.5, mt: "4px" }}>{t("earnRate")}</Typography>
             </Box>
             <Typography sx={{ color: "#171419", fontSize: 14, fontWeight: 600 }}>{t("productPrice")}</Typography>
           </Box>
@@ -142,15 +142,15 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
               borderRadius: "14px",
               display: "flex",
               justifyContent: "space-between",
-              mt: 1.5,
-              padding: "19px 20px",
+              mt: "12px",
+              padding: "16px 20px",
             }}
           >
             <Typography sx={{ color: "#75674f", fontSize: 12.5, fontWeight: 500 }}>{t("emailConvBalanceLabel")}</Typography>
             <Typography sx={{ color: "#171419", fontSize: 32, fontWeight: 600, letterSpacing: "-.04em", lineHeight: 1 }}>RM {state.balance.toFixed(2)}</Typography>
           </Box>
 
-          <Box sx={{ pt: 3, textAlign: "center" }}>
+          <Box sx={{ pt: "24px", textAlign: "center" }}>
             <Link
               href={href}
               underline="none"
@@ -163,7 +163,7 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
                 display: "inline-flex",
                 fontSize: 14,
                 fontWeight: 600,
-                gap: .75,
+                gap: "8px",
                 justifyContent: "center",
                 minHeight: 44,
                 padding: "0 21px",
@@ -186,12 +186,12 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
               color: "#85808b",
               fontSize: 10.5,
               lineHeight: 1.5,
-              mt: 4,
+              mt: "32px",
               padding: "20px 22px",
               textAlign: "center",
             }}
           >
-            <Typography sx={{ color: "#0071e3", fontSize: 12, fontWeight: 600, mb: 1 }}>SmartAffiliate · SmartKood</Typography>
+            <Typography sx={{ color: "#0071e3", fontSize: 12, fontWeight: 600, mb: "8px" }}>SmartAffiliate · SmartKood</Typography>
             {t("emailConvFooter")}
           </Box>
         </Box>

@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import CheckIcon from "@mui/icons-material/Check";
+import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -14,7 +15,7 @@ import RedditIcon from "@mui/icons-material/Reddit";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import XIcon from "@mui/icons-material/X";
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { FormField } from "../FormField";
 import type { ShareVariant, Translator } from "../types";
 
@@ -30,7 +31,7 @@ export function ShareDialogScreen({ variant, t }: ShareDialogScreenProps) {
         background:
           "radial-gradient(circle at 85% 12%, rgba(90,200,250,.72), transparent 35%), radial-gradient(circle at 8% 62%, rgba(255,59,107,.34), transparent 35%), radial-gradient(circle at 75% 88%, rgba(255,159,10,.4), transparent 38%), linear-gradient(145deg, #f2f8ff 0%, #edf7ff 48%, #fff7e8 100%)",
         borderRadius: "8px",
-        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif',
+        fontFamily: 'Roboto, sans-serif',
         minHeight: 650,
         overflow: "hidden",
         position: "relative",
@@ -97,7 +98,7 @@ function ShareDialog({ variant, t }: ShareDialogScreenProps) {
           content: '""',
           display: "block",
           height: 4,
-          margin: "-8px auto 20px",
+          margin: "-4px auto 20px",
           width: 44,
         },
       }}
@@ -165,17 +166,30 @@ function ShareDialog({ variant, t }: ShareDialogScreenProps) {
 function ShareSuccess({ t }: { t: Translator }) {
   const url = "https://buyer.smartaffiliate.com/shop/products/aerolite-3000?ref=AKLR8MX2";
   const [copied, setCopied] = useState(false);
+  const [canScrollMore, setCanScrollMore] = useState(true);
+  const shareRailRef = useRef<HTMLDivElement>(null);
   const handleCopy = async () => {
     try { await navigator.clipboard.writeText(url); } catch { /* preview only */ }
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1600);
+  };
+  const updateShareRail = () => {
+    const rail = shareRailRef.current;
+    if (!rail) return;
+    setCanScrollMore(rail.scrollLeft + rail.clientWidth < rail.scrollWidth - 4);
+  };
+  const showMorePlatforms = () => {
+    const rail = shareRailRef.current;
+    if (!rail) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    rail.scrollBy({ behavior: reduceMotion ? "auto" : "smooth", left: 192 });
   };
 
   return (
     <>
       <DialogHeading text={t("successTitle")} />
       <Alert icon={false} severity="success" sx={alertStyles("rgba(229,250,241,.88)", "#087355")}>{t("successCommission")}</Alert>
-      <Box sx={{ alignItems: "stretch", bgcolor: "rgba(247,247,250,.9)", border: "1px solid #dedde5", borderRadius: "13px", display: "flex", mb: 1.5, overflow: "hidden" }}>
+      <Box sx={{ alignItems: "stretch", bgcolor: "rgba(247,247,250,.9)", border: "1px solid #dedde5", borderRadius: "13px", display: "flex", mb: "16px", overflow: "hidden" }}>
         <Box component="code" sx={{ color: "#19151f", flex: 1, fontFamily: "var(--mono)", fontSize: 10.5, minWidth: 0, overflow: "hidden", p: "12px", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{url}</Box>
         <Button
           onClick={handleCopy}
@@ -186,35 +200,66 @@ function ShareSuccess({ t }: { t: Translator }) {
         </Button>
       </Box>
 
-      <Typography sx={{ color: "#746f7a", fontSize: 10.5, fontWeight: 500, letterSpacing: ".02em", mb: 1, textAlign: "center" }}>
+      <Typography sx={{ color: "#746f7a", fontSize: 10.5, fontWeight: 500, letterSpacing: ".02em", mb: "12px", textAlign: "center" }}>
         {t("emailUsedFor")}
       </Typography>
 
-      <Box
-        sx={{
-          display: "flex",
-          gap: 1,
-          mb: 2,
-          overflowX: "auto",
-          pb: .5,
-          scrollbarWidth: "none",
-          "&::-webkit-scrollbar": { display: "none" },
-          "& > :nth-of-type(1) .share-icon": { background: "linear-gradient(145deg, #e6fff2, #c6f7df)", color: "#087b55" },
-          "& > :nth-of-type(2) .share-icon": { background: "linear-gradient(145deg, #edf4ff, #d9e8ff)", color: "#2466c9" },
-          "& > :nth-of-type(3) .share-icon": { background: "linear-gradient(145deg, #ebf8ff, #d7efff)", color: "#2583bc" },
-          "& > :nth-of-type(4) .share-icon": { background: "linear-gradient(145deg, #f4f4f5, #e7e7ea)", color: "#19151f" },
-          "& > :nth-of-type(5) .share-icon": { background: "linear-gradient(145deg, #fff0f6, #f3e5ff)", color: "#b02d87" },
-        }}
-      >
-        <ShareButton icon={<WhatsAppIcon />} label={t("whatsapp")} />
-        <ShareButton icon={<FacebookIcon />} label={t("facebook")} />
-        <ShareButton icon={<TelegramIcon />} label={t("telegram")} />
-        <ShareButton icon={<XIcon />} label="X" />
-        <ShareButton icon={<InstagramIcon />} label="Instagram" />
-        <ShareButton icon={<LinkedInIcon />} label="LinkedIn" />
-        <ShareButton icon={<RedditIcon />} label="Reddit" />
-        <ShareButton icon={<PinterestIcon />} label="Pinterest" />
-        <ShareButton icon={<MoreHorizIcon />} label={t("others")} />
+      <Box sx={{ mb: "20px", position: "relative", "&::after": { background: "linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.96) 64%)", bottom: 4, content: canScrollMore ? '""' : "none", pointerEvents: "none", position: "absolute", right: 0, top: 0, width: 64 } }}>
+        <Box
+          ref={shareRailRef}
+          onScroll={updateShareRail}
+          sx={{
+            display: "flex",
+            gap: "8px",
+            overflowX: "auto",
+            pb: "4px",
+            pr: "48px",
+            scrollbarWidth: "none",
+            "&::-webkit-scrollbar": { display: "none" },
+            "& > :nth-of-type(1) .share-icon": { background: "linear-gradient(145deg, #e6fff2, #c6f7df)", color: "#087b55" },
+            "& > :nth-of-type(2) .share-icon": { background: "linear-gradient(145deg, #edf4ff, #d9e8ff)", color: "#2466c9" },
+            "& > :nth-of-type(3) .share-icon": { background: "linear-gradient(145deg, #ebf8ff, #d7efff)", color: "#2583bc" },
+            "& > :nth-of-type(4) .share-icon": { background: "linear-gradient(145deg, #f4f4f5, #e7e7ea)", color: "#19151f" },
+            "& > :nth-of-type(5) .share-icon": { background: "linear-gradient(145deg, #fff0f6, #f3e5ff)", color: "#b02d87" },
+          }}
+        >
+          <ShareButton icon={<WhatsAppIcon />} label={t("whatsapp")} />
+          <ShareButton icon={<FacebookIcon />} label={t("facebook")} />
+          <ShareButton icon={<TelegramIcon />} label={t("telegram")} />
+          <ShareButton icon={<XIcon />} label="X" />
+          <ShareButton icon={<InstagramIcon />} label="Instagram" />
+          <ShareButton icon={<LinkedInIcon />} label="LinkedIn" />
+          <ShareButton icon={<RedditIcon />} label="Reddit" />
+          <ShareButton icon={<PinterestIcon />} label="Pinterest" />
+          <ShareButton icon={<MoreHorizIcon />} label={t("others")} />
+        </Box>
+        <Button
+          aria-label={`${t("others")} platforms`}
+          disabled={!canScrollMore}
+          onClick={showMorePlatforms}
+          sx={{
+            background: "#fff",
+            border: "1px solid #dfe3e8",
+            borderRadius: "50%",
+            boxShadow: "0 8px 22px rgba(22,54,86,.18)",
+            color: "#0071e3",
+            height: 40,
+            minWidth: 40,
+            opacity: canScrollMore ? 1 : 0,
+            p: 0,
+            pointerEvents: canScrollMore ? "auto" : "none",
+            position: "absolute",
+            right: 0,
+            top: 4,
+            transition: "opacity .18s ease, transform .18s ease",
+            width: 40,
+            zIndex: 1,
+            "&:hover": { background: "#fff", transform: "translateX(2px)" },
+            "&:focus-visible": { outline: "3px solid #5ac8fa", outlineOffset: 2 },
+          }}
+        >
+          <ChevronRightRoundedIcon />
+        </Button>
       </Box>
       <SubmitButton fullWidth>{t("done")}</SubmitButton>
       <Box aria-live="polite" sx={{ height: 0, overflow: "hidden" }}>{copied ? t("copied") : ""}</Box>
@@ -232,15 +277,15 @@ function ShareButton({ icon, label }: { icon: ReactNode; label: string }) {
 }
 
 function DialogHeading({ text }: { text: string }) {
-  return <Typography component="h3" id="share-dialog-title" sx={{ color: "#151219", fontSize: 28, fontWeight: 600, letterSpacing: "-.035em", lineHeight: 1.08, m: 0, mb: 1 }}>{text}</Typography>;
+  return <Typography component="h3" id="share-dialog-title" sx={{ color: "#151219", fontSize: 28, fontWeight: 600, letterSpacing: "-.035em", lineHeight: 1.08, m: 0, mb: "8px" }}>{text}</Typography>;
 }
 
 function DialogCopy({ children }: { children: ReactNode }) {
-  return <Typography sx={{ color: "#746f7a", fontSize: 13.5, lineHeight: 1.5, mb: 2 }}>{children}</Typography>;
+  return <Typography sx={{ color: "#746f7a", fontSize: 13.5, lineHeight: 1.5, mb: "20px" }}>{children}</Typography>;
 }
 
 function FormActions({ children }: { children: ReactNode }) {
-  return <Box sx={{ display: "grid", gap: 1.25, gridTemplateColumns: "1fr 2fr", mt: 1.5 }}>{children}</Box>;
+  return <Box sx={{ display: "grid", gap: "12px", gridTemplateColumns: "1fr 2fr" }}>{children}</Box>;
 }
 
 function CancelButton({ children }: { children: ReactNode }) {
@@ -285,5 +330,5 @@ function SubmitButton({ children, disabled, fullWidth, state = "active" }: { chi
 }
 
 function alertStyles(background: string, color: string) {
-  return { bgcolor: background, border: `1px solid ${color}33`, borderRadius: "11px", color, fontSize: 12.5, lineHeight: 1.5, mb: 1.75 };
+  return { bgcolor: background, border: `1px solid ${color}33`, borderRadius: "11px", color, fontSize: 12.5, lineHeight: 1.5, mb: "16px" };
 }

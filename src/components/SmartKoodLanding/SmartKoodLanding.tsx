@@ -16,7 +16,7 @@ export function SmartKoodLanding({ state, t }: SmartKoodLandingProps) {
         background: 'var(--sk-bg)',
         borderRadius: '8px',
         color: 'var(--sk-text)',
-        fontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        fontFamily: 'Roboto, sans-serif',
         overflow: 'hidden',
       }}
     >
@@ -30,7 +30,7 @@ export function SmartKoodLanding({ state, t }: SmartKoodLandingProps) {
           fontWeight: 500,
           justifyContent: 'space-between',
           minHeight: 52,
-          padding: '14px 18px',
+          padding: '14px 16px',
         }}
       >
         <span>SmartKood</span>
@@ -47,7 +47,7 @@ export function SmartKoodLanding({ state, t }: SmartKoodLandingProps) {
           }}
         />
       </Box>
-      <Box sx={{ padding: '18px' }}>
+      <Box sx={{ padding: '16px' }}>
         <ProductCard t={t} />
         <AffiliateShareCard t={t} />
       </Box>

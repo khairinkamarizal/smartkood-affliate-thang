@@ -32,8 +32,8 @@ export function ScreenFrame({ screen, state, t }: ScreenFrameProps) {
           flexWrap: 'wrap',
           fontFamily: 'var(--mono)',
           fontSize: 11,
-          gap: 1,
-          mb: 1,
+          gap: '8px',
+          mb: '8px',
         }}
       >
         <Chip
