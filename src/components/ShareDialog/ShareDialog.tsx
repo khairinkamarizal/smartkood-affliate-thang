@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import CheckIcon from "@mui/icons-material/Check";
+import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -166,6 +167,7 @@ function ShareDialog({ variant, t }: ShareDialogScreenProps) {
 function ShareSuccess({ t }: { t: Translator }) {
   const url = "https://buyer.smartaffiliate.com/shop/products/aerolite-3000?ref=AKLR8MX2";
   const [copied, setCopied] = useState(false);
+  const [canScrollBack, setCanScrollBack] = useState(false);
   const [canScrollMore, setCanScrollMore] = useState(true);
   const shareRailRef = useRef<HTMLDivElement>(null);
   const handleCopy = async () => {
@@ -176,13 +178,14 @@ function ShareSuccess({ t }: { t: Translator }) {
   const updateShareRail = () => {
     const rail = shareRailRef.current;
     if (!rail) return;
+    setCanScrollBack(rail.scrollLeft > 4);
     setCanScrollMore(rail.scrollLeft + rail.clientWidth < rail.scrollWidth - 4);
   };
-  const showMorePlatforms = () => {
+  const scrollPlatforms = (left: number) => {
     const rail = shareRailRef.current;
     if (!rail) return;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    rail.scrollBy({ behavior: reduceMotion ? "auto" : "smooth", left: 192 });
+    rail.scrollBy({ behavior: reduceMotion ? "auto" : "smooth", left });
   };
 
   return (
@@ -204,7 +207,7 @@ function ShareSuccess({ t }: { t: Translator }) {
         {t("emailUsedFor")}
       </Typography>
 
-      <Box sx={{ mb: "20px", position: "relative", "&::after": { background: "linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.96) 64%)", bottom: 4, content: canScrollMore ? '""' : "none", pointerEvents: "none", position: "absolute", right: 0, top: 0, width: 64 } }}>
+      <Box sx={{ mb: "20px", position: "relative", "&::before": { background: "linear-gradient(270deg, rgba(255,255,255,0), rgba(255,255,255,.96) 64%)", bottom: 4, content: canScrollBack ? '""' : "none", left: 0, pointerEvents: "none", position: "absolute", top: 0, width: 64, zIndex: 1 }, "&::after": { background: "linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.96) 64%)", bottom: 4, content: canScrollMore ? '""' : "none", pointerEvents: "none", position: "absolute", right: 0, top: 0, width: 64, zIndex: 1 } }}>
         <Box
           ref={shareRailRef}
           onScroll={updateShareRail}
@@ -234,29 +237,18 @@ function ShareSuccess({ t }: { t: Translator }) {
           <ShareButton icon={<MoreHorizIcon />} label={t("others")} />
         </Box>
         <Button
+          aria-label="Previous sharing platforms"
+          disabled={!canScrollBack}
+          onClick={() => scrollPlatforms(-192)}
+          sx={shareRailArrowStyles("left", canScrollBack)}
+        >
+          <ChevronLeftRoundedIcon />
+        </Button>
+        <Button
           aria-label={`${t("others")} platforms`}
           disabled={!canScrollMore}
-          onClick={showMorePlatforms}
-          sx={{
-            background: "#fff",
-            border: "1px solid #dfe3e8",
-            borderRadius: "50%",
-            boxShadow: "0 8px 22px rgba(22,54,86,.18)",
-            color: "#0071e3",
-            height: 40,
-            minWidth: 40,
-            opacity: canScrollMore ? 1 : 0,
-            p: 0,
-            pointerEvents: canScrollMore ? "auto" : "none",
-            position: "absolute",
-            right: 0,
-            top: 4,
-            transition: "opacity .18s ease, transform .18s ease",
-            width: 40,
-            zIndex: 1,
-            "&:hover": { background: "#fff", transform: "translateX(2px)" },
-            "&:focus-visible": { outline: "3px solid #5ac8fa", outlineOffset: 2 },
-          }}
+          onClick={() => scrollPlatforms(192)}
+          sx={shareRailArrowStyles("right", canScrollMore)}
         >
           <ChevronRightRoundedIcon />
         </Button>
@@ -276,8 +268,31 @@ function ShareButton({ icon, label }: { icon: ReactNode; label: string }) {
   );
 }
 
+function shareRailArrowStyles(side: "left" | "right", visible: boolean) {
+  return {
+    background: "#fff",
+    border: "1px solid #dfe3e8",
+    borderRadius: "50%",
+    boxShadow: "0 8px 22px rgba(22,54,86,.18)",
+    color: "#0071e3",
+    height: 40,
+    minWidth: 40,
+    opacity: visible ? 1 : 0,
+    p: 0,
+    pointerEvents: visible ? "auto" : "none",
+    position: "absolute",
+    [side]: 0,
+    top: 4,
+    transition: "opacity .18s ease, transform .18s ease",
+    width: 40,
+    zIndex: 2,
+    "&:hover": { background: "#fff", transform: `translateX(${side === "right" ? 2 : -2}px)` },
+    "&:focus-visible": { outline: "3px solid #5ac8fa", outlineOffset: 2 },
+  };
+}
+
 function DialogHeading({ text }: { text: string }) {
-  return <Typography component="h3" id="share-dialog-title" sx={{ color: "#151219", fontSize: 28, fontWeight: 600, letterSpacing: "-.035em", lineHeight: 1.08, m: 0, mb: "8px" }}>{text}</Typography>;
+  return <Typography component="h3" id="share-dialog-title" sx={{ color: "#151219", fontSize: 24, fontWeight: 600, letterSpacing: "-.025em", lineHeight: 1.15, m: 0, mb: "8px" }}>{text}</Typography>;
 }
 
 function DialogCopy({ children }: { children: ReactNode }) {

@@ -123,31 +123,41 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
               borderRadius: "14px",
               display: "grid",
               gap: "16px",
-              gridTemplateColumns: "minmax(0,1fr) auto",
+              gridTemplateColumns: { xs: "56px minmax(0,1fr) auto", sm: "64px minmax(0,1fr) auto" },
               padding: "16px 20px",
             }}
           >
+            <Box
+              component="img"
+              src="/aerolite-air-purifier.png"
+              alt={t("productName")}
+              sx={{
+                alignSelf: "center",
+                background: "#fff",
+                border: "1px solid #dce6ec",
+                borderRadius: "12px",
+                height: { xs: 56, sm: 64 },
+                objectFit: "cover",
+                width: { xs: 56, sm: 64 },
+              }}
+            />
             <Box sx={{ minWidth: 0 }}>
               <Typography sx={{ color: "#171419", fontSize: 14, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{t("productName")}</Typography>
               <Typography sx={{ color: "#8a848e", fontSize: 11.5, mt: "4px" }}>{t("earnRate")}</Typography>
             </Box>
-            <Typography sx={{ color: "#171419", fontSize: 14, fontWeight: 600 }}>{t("productPrice")}</Typography>
+            <Typography sx={{ alignSelf: "center", color: "#171419", fontSize: 14, fontWeight: 600 }}>{t("productPrice")}</Typography>
           </Box>
 
           <Box
             sx={{
-              alignItems: "flex-end",
-              background: "#fff7e8",
-              border: "1px solid #f2dfbd",
-              borderRadius: "14px",
-              display: "flex",
-              justifyContent: "space-between",
-              mt: "12px",
-              padding: "16px 20px",
+              borderTop: "1px solid #e4e7eb",
+              mt: "24px",
+              pt: "24px",
+              textAlign: "center",
             }}
           >
-            <Typography sx={{ color: "#75674f", fontSize: 12.5, fontWeight: 500 }}>{t("emailConvBalanceLabel")}</Typography>
-            <Typography sx={{ color: "#171419", fontSize: 32, fontWeight: 600, letterSpacing: "-.04em", lineHeight: 1 }}>RM {state.balance.toFixed(2)}</Typography>
+            <Typography sx={{ color: "#77717b", fontSize: 12.5, fontWeight: 500 }}>{t("emailConvBalanceLabel")}</Typography>
+            <Typography sx={{ color: "#171419", fontSize: 36, fontWeight: 600, letterSpacing: "-.045em", lineHeight: 1, mt: "8px" }}>RM {state.balance.toFixed(2)}</Typography>
           </Box>
 
           <Box sx={{ pt: "24px", textAlign: "center" }}>

@@ -89,7 +89,7 @@ const cardArtifact: Artifact = {
 
 const dialogArtifact: Artifact = {
   name: 'ShareDialog',
-  prompt: `Create a mobile-first affiliate share flow as an iPhone-style bottom sheet. ${sharedBrief}\n\nSupport initial, submitting, success, rate-limited, and revoked states. Submitting uses an Apple-blue button at 72% opacity with a spinner and no hover. Rate-limited uses a flat neutral-gray disabled button with no shadow. In success, show sharing platforms in a horizontal rail with a visible right-edge arrow and fade so overflow is discoverable; the arrow scrolls the rail and remains keyboard accessible. Keep labels associated, announce copy success with aria-live, and keep the sheet anchored to the bottom with a 28px top radius.`,
+  prompt: `Create a mobile-first affiliate share flow as an iPhone-style bottom sheet. ${sharedBrief}\n\nSupport initial, submitting, success, rate-limited, and revoked states. Submitting uses an Apple-blue button at 72% opacity with a spinner and no hover. Rate-limited uses a flat neutral-gray disabled button with no shadow. In success, show sharing platforms in a horizontal rail with visible edge fades and keyboard-accessible arrows: right appears while more platforms remain, left appears after the user scrolls forward, and each hides at its respective end. Keep labels associated, announce copy success with aria-live, and keep the sheet anchored to the bottom with a 28px top radius.`,
   html: `<div class="sheet-backdrop">
   <section class="share-sheet" role="dialog" aria-modal="true" aria-labelledby="share-title">
     <span class="sheet-handle" aria-hidden="true"></span>
@@ -99,7 +99,7 @@ const dialogArtifact: Artifact = {
     <input id="share-email" type="email" value="aishah@example.com">
     <div class="actions"><button class="quiet">Cancel</button><button class="primary">Get my link</button></div>
     <!-- Success state -->
-    <div class="share-rail-wrap"><div class="share-rail"><button>WhatsApp</button><button>Facebook</button><button>Telegram</button><button>More</button></div><button class="share-next" aria-label="See more sharing platforms">›</button></div>
+    <div class="share-rail-wrap"><button class="share-prev" aria-label="Previous sharing platforms">‹</button><div class="share-rail"><button>WhatsApp</button><button>Facebook</button><button>Telegram</button><button>More</button></div><button class="share-next" aria-label="See more sharing platforms">›</button></div>
   </section>
 </div>`,
   css: `.sheet-backdrop { position:relative; min-height:650px; background:rgba(17,24,25,.42); }
@@ -107,25 +107,26 @@ const dialogArtifact: Artifact = {
   background:rgba(255,255,255,.96); box-shadow:0 -24px 64px rgba(28,44,46,.22); color:#171d1f; }
 .sheet-handle { display:block; width:44px; height:4px; margin:-4px auto 20px; border-radius:99px;
   background:linear-gradient(90deg,#5ac8fa,#0071e3 34%,#ff3b6b 68%,#ff9f0a); }
-.share-sheet h2 { margin:0 0 8px; font:600 28px/1.08 Roboto,sans-serif; letter-spacing:-.035em; }
+.share-sheet h2 { margin:0 0 8px; font:600 24px/1.15 Roboto,sans-serif; letter-spacing:-.025em; }
 .share-sheet label { display:block; margin:20px 0 8px; color:#686f70; font:500 13px Roboto,sans-serif; }
 .share-sheet input { width:100%; min-height:44px; padding:0 12px; border:1px solid #d9ddde; border-radius:11px; background:#f5f7f7; }
 .actions { display:grid; grid-template-columns:1fr 2fr; gap:12px; margin-top:20px; }
 .actions button { min-height:46px; border:0; border-radius:12px; font-size:15px; font-weight:600; }
 .primary { background:#0071e3; color:white; }.quiet { background:transparent; color:#727879; }
-.share-rail-wrap { position:relative; }.share-rail { display:flex; gap:8px; overflow-x:auto; padding-right:48px; scrollbar-width:none; }.share-next { position:absolute; top:4px; right:0; width:40px; height:40px; border:1px solid #dfe3e8; border-radius:50%; background:#fff; color:#0071e3; box-shadow:0 8px 22px rgba(22,54,86,.18); }
+.share-rail-wrap { position:relative; }.share-rail { display:flex; gap:8px; overflow-x:auto; padding-right:48px; scrollbar-width:none; }.share-prev,.share-next { position:absolute; top:4px; z-index:2; width:40px; height:40px; border:1px solid #dfe3e8; border-radius:50%; background:#fff; color:#0071e3; box-shadow:0 8px 22px rgba(22,54,86,.18); }.share-prev { left:0; opacity:0; }.share-next { right:0; }
 .primary:disabled[data-state="loading"] { opacity:.72; }.primary:disabled[data-state="rate"] { background:#eceeef; color:#8e9394; opacity:1; }`,
 }
 
 const emailArtifact: Artifact = {
   name: 'ConversionEmail',
-  prompt: `Create a 600px-wide affiliate reward newsletter. ${sharedBrief}\n\nUse a branded header, a centered editorial reward message, a plain two-line purchase receipt, a balance row, one solid Apple-blue CTA, and a distinct branded footer. Keep the layout email-friendly: single column, generous spacing, no dark reward cards, no huge promo panels, and no invented claims. Provide separate sign-up and sign-in CTA variants.`,
+  prompt: `Create a 600px-wide affiliate reward newsletter. ${sharedBrief}\n\nUse a branded header, a centered editorial reward message, a compact product receipt with a 64px product thumbnail, product details and price, then a separate centered pending-balance summary divided by a thin rule. Follow with one solid Apple-blue CTA and a distinct branded footer. Keep the layout email-friendly: single column, generous spacing, no dark reward cards, no huge promo panels, and no invented claims. Provide separate sign-up and sign-in CTA variants.`,
   html: `<article class="reward-email">
   <header><b><i>smart</i>affiliate.</b><small>SmartKood</small></header>
   <main>
     <p>Hi there!</p><h1>You earned <em>RM 22.00</em> from your share!</h1>
     <p>Someone made a purchase using your affiliate link for Aerolite Air Purifier 3000.</p>
-    <dl><div><dt>Aerolite Air Purifier 3000</dt><dd>RM 459.00</dd></div><div><dt>Your pending balance</dt><dd>RM 42.00</dd></div></dl>
+    <div class="product-receipt"><img src="aerolite-air-purifier.png" alt="Aerolite Air Purifier 3000"><div><b>Aerolite Air Purifier 3000</b><small>Earn 5%</small></div><strong>RM 459.00</strong></div>
+    <section class="balance-summary"><small>Your pending balance</small><strong>RM 42.00</strong></section>
     <a class="email-cta" href="#">Sign up to claim your balance →</a>
   </main>
   <footer><b>SmartAffiliate · SmartKood</b><p>You're receiving this because someone shared an affiliate link from this email address.</p></footer>
@@ -134,7 +135,7 @@ const emailArtifact: Artifact = {
 .reward-email::before { content:""; display:block; height:3px; background:linear-gradient(90deg,#5ac8fa,#0071e3 34%,#ff3b6b 68%,#ff9f0a); }
 .reward-email header { display:flex; justify-content:space-between; padding:24px 32px; background:#0071e3; color:#fff; }.reward-email header i { color:#ffd60a; font-style:normal; }
 .reward-email main { padding:48px; text-align:center; border-block:1px solid #eceeee; }.reward-email h1 { margin:12px auto 20px; max-width:470px; font-size:40px; font-weight:600; line-height:1.06; letter-spacing:-.04em; }.reward-email h1 em { color:#ff3b6b; font-style:normal; }
-.reward-email dl { margin:32px 0 26px; text-align:left; }.reward-email dl div { display:flex; justify-content:space-between; padding:18px 0; border-bottom:1px solid #e8ebeb; }.reward-email dd { margin:0; font-weight:600; }
+.product-receipt { display:grid; grid-template-columns:64px minmax(0,1fr) auto; gap:16px; align-items:center; padding:16px 20px; border:1px solid #dceaf1; border-radius:14px; background:#f2f8fc; text-align:left; }.product-receipt img { width:64px; height:64px; border:1px solid #dce6ec; border-radius:12px; object-fit:cover; }.product-receipt small,.product-receipt b { display:block; }.balance-summary { margin-top:24px; padding-top:24px; border-top:1px solid #e4e7eb; text-align:center; }.balance-summary strong { display:block; margin-top:8px; font-size:36px; font-weight:600; }
 .email-cta { display:inline-flex; padding:14px 20px; border-radius:12px; background:#0071e3; color:#fff; text-decoration:none; font-size:14px; font-weight:600; }
 .reward-email footer { padding:24px 38px; color:#83898a; font-size:10px; text-align:center; }`,
 }
