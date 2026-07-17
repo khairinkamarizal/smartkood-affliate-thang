@@ -93,8 +93,7 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
 
         <Box
           sx={{
-            background:
-              "radial-gradient(circle at 4% 0%, rgba(90,200,250,.62), transparent 43%), radial-gradient(circle at 100% 18%, rgba(255,59,107,.42), transparent 40%), radial-gradient(circle at 52% 118%, rgba(255,159,10,.38), transparent 42%), #fff",
+            background: "linear-gradient(145deg, #fffdfa 0%, #ffffff 48%, #f5faff 100%)",
             borderBlock: "1px solid #ececf0",
             padding: { xs: "40px 24px", sm: "48px" },
             textAlign: "center",
@@ -150,10 +149,10 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
 
           <Box
             sx={{
-              background: "#0071e3",
-              border: "1px solid rgba(0,92,184,.34)",
+              background:
+                "radial-gradient(circle at 12% 0%, rgba(90,200,250,.55), transparent 36%), radial-gradient(circle at 100% 18%, rgba(255,59,107,.34), transparent 34%), radial-gradient(circle at 58% 115%, rgba(255,159,10,.38), transparent 40%), linear-gradient(145deg, #ffffff 8%, #f2f8ff 55%, #fff8ed 100%)",
               borderRadius: "20px",
-              boxShadow: "0 18px 38px rgba(0,113,227,.24)",
+              boxShadow: "0 16px 34px rgba(22,54,86,.13)",
               mt: "20px",
               overflow: "hidden",
               padding: { xs: "28px 20px 20px", sm: "32px 32px 24px" },
@@ -161,39 +160,13 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
               textAlign: "center",
             }}
           >
-            <Box
-              aria-hidden="true"
-              sx={{
-                background: "#64d2ff",
-                borderRadius: "50%",
-                height: 96,
-                left: -46,
-                opacity: .82,
-                position: "absolute",
-                top: -50,
-                width: 96,
-              }}
-            />
-            <Box
-              aria-hidden="true"
-              sx={{
-                background: "#ff375f",
-                borderRadius: "50%",
-                bottom: -58,
-                height: 112,
-                opacity: .82,
-                position: "absolute",
-                right: -54,
-                width: 112,
-              }}
-            />
             <Box sx={{ alignItems: "center", display: "inline-flex", gap: "8px", position: "relative" }}>
               <Box aria-hidden="true" sx={{ background: "#ffd60a", borderRadius: "50%", height: 8, width: 8 }} />
-              <Typography sx={{ color: "rgba(255,255,255,.86)", fontSize: 11.5, fontWeight: 600, letterSpacing: ".075em", textTransform: "uppercase" }}>
+              <Typography sx={{ color: "#5f5964", fontSize: 11.5, fontWeight: 600, letterSpacing: ".075em", textTransform: "uppercase" }}>
                 {t("emailConvBalanceLabel")}
               </Typography>
             </Box>
-            <Typography sx={{ color: "#fff", fontSize: { xs: 46, sm: 54 }, fontWeight: 600, letterSpacing: "-.055em", lineHeight: 1, mt: "10px", position: "relative" }}>
+            <Typography sx={{ color: "#ff3b6b", fontSize: { xs: 46, sm: 54 }, fontWeight: 600, letterSpacing: "-.055em", lineHeight: 1, mt: "10px", position: "relative" }}>
               RM {state.balance.toFixed(2)}
             </Typography>
             <Link
@@ -201,10 +174,10 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
               underline="none"
               sx={{
                 alignItems: "center",
-                background: "#fff",
+                background: "#0071e3",
                 borderRadius: "12px",
-                boxShadow: "0 8px 20px rgba(0,55,110,.18)",
-                color: "#0068d1",
+                boxShadow: "0 10px 24px rgba(0,113,227,.24)",
+                color: "#fff",
                 display: "inline-flex",
                 fontSize: 14,
                 fontWeight: 600,
@@ -216,7 +189,7 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
                 position: "relative",
                 transition: "transform .2s ease, box-shadow .2s ease",
                 width: { xs: "100%", sm: "auto" },
-                "&:hover": { background: "#f4f9ff", boxShadow: "0 11px 24px rgba(0,55,110,.24)", transform: "translateY(-1px)" },
+                "&:hover": { background: "#0064c8", boxShadow: "0 13px 28px rgba(0,113,227,.3)", transform: "translateY(-1px)" },
                 "&:focus-visible": { outline: "3px solid #73c8f2", outlineOffset: 3 },
               }}
             >

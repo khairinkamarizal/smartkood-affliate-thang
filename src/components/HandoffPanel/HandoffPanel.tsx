@@ -119,23 +119,27 @@ const dialogArtifact: Artifact = {
 
 const emailArtifact: Artifact = {
   name: 'ConversionEmail',
-  prompt: `Create a 600px-wide affiliate reward newsletter. ${sharedBrief}\n\nUse a branded header, a centered editorial reward message and a compact white product receipt with a 64px product thumbnail, details and price. Make the conversion moment unmistakable: place the unclaimed-money label, a large balance and a white claim CTA together inside one vivid solid Apple-blue panel. Add only restrained cyan, coral and yellow circular accents at its edges. Finish with a distinct branded footer. Keep the layout email-friendly, single-column and spacious, with no invented claims. Provide separate sign-up and sign-in CTA variants.`,
+  prompt: `Create a 600px-wide affiliate reward newsletter. ${sharedBrief}\n\nUse a branded header and a centered editorial reward message on a quiet warm-white surface with only an extremely subtle cool-blue tint; keep coral emphasis on the earned amount, but do not repeat the colorful mesh here. Follow with a compact white product receipt containing a 64px product thumbnail, details and price. Make the conversion moment unmistakable while matching the claim landing: place the unclaimed-money label, a large coral balance and a solid Apple-blue CTA together inside the email's only airy mesh panel, using balanced diffused cyan, coral and tangerine light plus a yellow signal dot. Finish with a distinct branded footer. Keep the layout email-friendly, single-column and spacious, with no invented claims. Provide separate sign-up and sign-in CTA variants.`,
   html: `<article class="reward-email">
   <header><b><i>smart</i>affiliate.</b><small>SmartKood</small></header>
   <main>
+    <section class="email-hero">
     <p>Hi there!</p><h1>You earned <em>RM 22.00</em> from your share!</h1>
     <p>Someone made a purchase using your affiliate link for Aerolite Air Purifier 3000.</p>
+    </section>
+    <section class="email-body">
     <div class="product-receipt"><img src="aerolite-air-purifier.png" alt="Aerolite Air Purifier 3000"><div><b>Aerolite Air Purifier 3000</b><small>Earn 5%</small></div><strong>RM 459.00</strong></div>
     <section class="claim-balance"><small>You have unclaimed money</small><strong>RM 42.00</strong><a href="#">Sign up to claim your balance →</a></section>
+    </section>
   </main>
   <footer><b>SmartAffiliate · SmartKood</b><p>You're receiving this because someone shared an affiliate link from this email address.</p></footer>
 </article>`,
   css: `.reward-email { max-width:600px; margin:auto; overflow:hidden; border:1px solid #e2e5e5; border-radius:22px; background:#fff; box-shadow:0 24px 60px rgba(33,45,46,.10); color:#171d1f; font-family:Roboto,sans-serif; }
 .reward-email::before { content:""; display:block; height:3px; background:linear-gradient(90deg,#5ac8fa,#0071e3 34%,#ff3b6b 68%,#ff9f0a); }
 .reward-email header { display:flex; justify-content:space-between; padding:24px 32px; background:#0071e3; color:#fff; }.reward-email header i { color:#ffd60a; font-style:normal; }
-.reward-email main { padding:48px; text-align:center; border-block:1px solid #eceeee; }.reward-email h1 { margin:12px auto 20px; max-width:470px; font-size:40px; font-weight:600; line-height:1.06; letter-spacing:-.04em; }.reward-email h1 em { color:#ff3b6b; font-style:normal; }
+.reward-email main { text-align:center; border-block:1px solid #eceeee; }.email-hero { padding:48px; background:linear-gradient(145deg,#fffdfa 0%,#fff 48%,#f5faff 100%); }.email-body { padding:32px 48px 40px; }.reward-email h1 { margin:12px auto 20px; max-width:470px; font-size:40px; font-weight:600; line-height:1.06; letter-spacing:-.04em; }.reward-email h1 em { color:#ff3b6b; font-style:normal; }
 .product-receipt { display:grid; grid-template-columns:64px minmax(0,1fr) auto; gap:16px; align-items:center; padding:16px 20px; border:1px solid #e4e7eb; border-radius:14px; background:#fff; text-align:left; }.product-receipt img { width:64px; height:64px; border:1px solid #dce6ec; border-radius:12px; object-fit:cover; }.product-receipt small,.product-receipt b { display:block; }
-.claim-balance { position:relative; overflow:hidden; margin-top:20px; padding:32px; border-radius:20px; background:#0071e3; box-shadow:0 18px 38px rgba(0,113,227,.24); color:#fff; text-align:center; }.claim-balance small { display:block; font-weight:600; letter-spacing:.075em; text-transform:uppercase; }.claim-balance strong { display:block; margin-top:10px; font-size:54px; font-weight:600; letter-spacing:-.055em; }.claim-balance a { display:inline-flex; min-height:48px; align-items:center; margin-top:24px; padding:0 24px; border-radius:12px; background:#fff; color:#0068d1; text-decoration:none; font-size:14px; font-weight:600; }
+.claim-balance { position:relative; overflow:hidden; margin-top:20px; padding:32px; border-radius:20px; background:radial-gradient(circle at 12% 0%,rgba(90,200,250,.55),transparent 36%),radial-gradient(circle at 100% 18%,rgba(255,59,107,.34),transparent 34%),radial-gradient(circle at 58% 115%,rgba(255,159,10,.38),transparent 40%),linear-gradient(145deg,#fff 8%,#f2f8ff 55%,#fff8ed 100%); box-shadow:0 16px 34px rgba(22,54,86,.13); text-align:center; }.claim-balance small { display:block; color:#5f5964; font-weight:600; letter-spacing:.075em; text-transform:uppercase; }.claim-balance strong { display:block; margin-top:10px; color:#ff3b6b; font-size:54px; font-weight:600; letter-spacing:-.055em; }.claim-balance a { display:inline-flex; min-height:48px; align-items:center; margin-top:24px; padding:0 24px; border-radius:12px; background:#0071e3; color:#fff; text-decoration:none; font-size:14px; font-weight:600; }
 .reward-email footer { padding:24px 38px; color:#83898a; font-size:10px; text-align:center; }`,
 }
 
