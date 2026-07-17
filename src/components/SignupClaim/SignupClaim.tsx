@@ -51,28 +51,39 @@ export function SignupClaim({ state, t }: SignupClaimProps) {
       >
         <Box
           sx={{
-            background: 'radial-gradient(circle at 0% 0%, rgba(90,200,250,.4), transparent 46%), radial-gradient(circle at 100% 100%, rgba(255,59,107,.24), transparent 45%), #f8f8fb',
+            background:
+              'radial-gradient(circle at 12% 0%, rgba(90,200,250,.62), transparent 38%), radial-gradient(circle at 100% 18%, rgba(255,59,107,.36), transparent 36%), radial-gradient(circle at 58% 115%, rgba(255,159,10,.42), transparent 42%), linear-gradient(145deg, #ffffff 8%, #f2f8ff 55%, #fff8ed 100%)',
             borderBottom: { xs: '1px solid #e7e6eb', md: 0 },
             borderRight: { xs: 0, md: '1px solid #e7e6eb' },
+            color: '#171419',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-start',
-            minHeight: { xs: 260, md: 480 },
+            minHeight: { xs: 300, md: 480 },
+            overflow: 'hidden',
             padding: { xs: '32px 24px', sm: '40px' },
+            position: 'relative',
           }}
         >
-          <Box>
-            <Typography sx={{ color: '#0071e3', fontSize: 17, fontWeight: 600, letterSpacing: '-.025em', mb: '48px' }}>
+          <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column', position: 'relative', zIndex: 1 }}>
+            <Typography sx={{ color: '#0071e3', fontSize: 17, fontWeight: 600, letterSpacing: '-.025em', mb: { xs: '40px', md: '48px' } }}>
               smartaffiliate<Box component="span" sx={{ color: '#ff3b6b' }}>.</Box>
             </Typography>
             <Typography component="div" role="heading" aria-level={1} sx={{ fontSize: { xs: 36, sm: 44 }, fontWeight: 600, letterSpacing: '-.04em', lineHeight: 1.05 }}>
               {t('signupWelcome')}
             </Typography>
             <Typography sx={{ color: '#69636d', fontSize: 15, lineHeight: 1.5, mt: '16px' }}>{t('signupClaimSub')}</Typography>
-          </Box>
-          <Box sx={{ mt: '56px' }}>
-            <Typography sx={{ color: '#817b85', fontSize: 11, fontWeight: 600, letterSpacing: '.06em', textTransform: 'uppercase' }}>{t('signupBalanceLabel')}</Typography>
-            <Typography sx={{ fontSize: { xs: 44, sm: 54 }, fontWeight: 600, letterSpacing: '-.05em', lineHeight: 1, mt: '8px' }}>RM {state.balance.toFixed(2)}</Typography>
+            <Box sx={{ mt: 'auto', pt: { xs: '44px', md: '56px' } }}>
+              <Box sx={{ alignItems: 'center', display: 'flex', gap: '8px' }}>
+                <Box aria-hidden="true" sx={{ background: '#ffd60a', borderRadius: '50%', height: 8, width: 8 }} />
+                <Typography sx={{ color: '#5f5964', fontSize: 11, fontWeight: 600, letterSpacing: '.075em', textTransform: 'uppercase' }}>
+                  {t('signupBalanceLabel')}
+                </Typography>
+              </Box>
+              <Typography sx={{ color: '#0071e3', fontSize: { xs: 46, sm: 54 }, fontWeight: 600, letterSpacing: '-.055em', lineHeight: 1, mt: '10px' }}>
+                RM {state.balance.toFixed(2)}
+              </Typography>
+            </Box>
           </Box>
         </Box>
 

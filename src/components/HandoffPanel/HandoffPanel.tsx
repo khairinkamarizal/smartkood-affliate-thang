@@ -119,15 +119,14 @@ const dialogArtifact: Artifact = {
 
 const emailArtifact: Artifact = {
   name: 'ConversionEmail',
-  prompt: `Create a 600px-wide affiliate reward newsletter. ${sharedBrief}\n\nUse a branded header, a centered editorial reward message, a compact product receipt with a 64px product thumbnail, product details and price, then a separate centered pending-balance summary divided by a thin rule. Follow with one solid Apple-blue CTA and a distinct branded footer. Keep the layout email-friendly: single column, generous spacing, no dark reward cards, no huge promo panels, and no invented claims. Provide separate sign-up and sign-in CTA variants.`,
+  prompt: `Create a 600px-wide affiliate reward newsletter. ${sharedBrief}\n\nUse a branded header, a centered editorial reward message and a compact white product receipt with a 64px product thumbnail, details and price. Make the conversion moment unmistakable: place the unclaimed-money label, a large balance and a white claim CTA together inside one vivid solid Apple-blue panel. Add only restrained cyan, coral and yellow circular accents at its edges. Finish with a distinct branded footer. Keep the layout email-friendly, single-column and spacious, with no invented claims. Provide separate sign-up and sign-in CTA variants.`,
   html: `<article class="reward-email">
   <header><b><i>smart</i>affiliate.</b><small>SmartKood</small></header>
   <main>
     <p>Hi there!</p><h1>You earned <em>RM 22.00</em> from your share!</h1>
     <p>Someone made a purchase using your affiliate link for Aerolite Air Purifier 3000.</p>
     <div class="product-receipt"><img src="aerolite-air-purifier.png" alt="Aerolite Air Purifier 3000"><div><b>Aerolite Air Purifier 3000</b><small>Earn 5%</small></div><strong>RM 459.00</strong></div>
-    <section class="balance-summary"><small>Your pending balance</small><strong>RM 42.00</strong></section>
-    <a class="email-cta" href="#">Sign up to claim your balance →</a>
+    <section class="claim-balance"><small>You have unclaimed money</small><strong>RM 42.00</strong><a href="#">Sign up to claim your balance →</a></section>
   </main>
   <footer><b>SmartAffiliate · SmartKood</b><p>You're receiving this because someone shared an affiliate link from this email address.</p></footer>
 </article>`,
@@ -135,16 +134,16 @@ const emailArtifact: Artifact = {
 .reward-email::before { content:""; display:block; height:3px; background:linear-gradient(90deg,#5ac8fa,#0071e3 34%,#ff3b6b 68%,#ff9f0a); }
 .reward-email header { display:flex; justify-content:space-between; padding:24px 32px; background:#0071e3; color:#fff; }.reward-email header i { color:#ffd60a; font-style:normal; }
 .reward-email main { padding:48px; text-align:center; border-block:1px solid #eceeee; }.reward-email h1 { margin:12px auto 20px; max-width:470px; font-size:40px; font-weight:600; line-height:1.06; letter-spacing:-.04em; }.reward-email h1 em { color:#ff3b6b; font-style:normal; }
-.product-receipt { display:grid; grid-template-columns:64px minmax(0,1fr) auto; gap:16px; align-items:center; padding:16px 20px; border:1px solid #dceaf1; border-radius:14px; background:#f2f8fc; text-align:left; }.product-receipt img { width:64px; height:64px; border:1px solid #dce6ec; border-radius:12px; object-fit:cover; }.product-receipt small,.product-receipt b { display:block; }.balance-summary { margin-top:24px; padding-top:24px; border-top:1px solid #e4e7eb; text-align:center; }.balance-summary strong { display:block; margin-top:8px; font-size:36px; font-weight:600; }
-.email-cta { display:inline-flex; padding:14px 20px; border-radius:12px; background:#0071e3; color:#fff; text-decoration:none; font-size:14px; font-weight:600; }
+.product-receipt { display:grid; grid-template-columns:64px minmax(0,1fr) auto; gap:16px; align-items:center; padding:16px 20px; border:1px solid #e4e7eb; border-radius:14px; background:#fff; text-align:left; }.product-receipt img { width:64px; height:64px; border:1px solid #dce6ec; border-radius:12px; object-fit:cover; }.product-receipt small,.product-receipt b { display:block; }
+.claim-balance { position:relative; overflow:hidden; margin-top:20px; padding:32px; border-radius:20px; background:#0071e3; box-shadow:0 18px 38px rgba(0,113,227,.24); color:#fff; text-align:center; }.claim-balance small { display:block; font-weight:600; letter-spacing:.075em; text-transform:uppercase; }.claim-balance strong { display:block; margin-top:10px; font-size:54px; font-weight:600; letter-spacing:-.055em; }.claim-balance a { display:inline-flex; min-height:48px; align-items:center; margin-top:24px; padding:0 24px; border-radius:12px; background:#fff; color:#0068d1; text-decoration:none; font-size:14px; font-weight:600; }
 .reward-email footer { padding:24px 38px; color:#83898a; font-size:10px; text-align:center; }`,
 }
 
 const signupArtifact: Artifact = {
   name: 'SignupClaim',
-  prompt: `Create an earnings-claim signup page. ${sharedBrief}\n\nUse one white two-column card: the left side holds the existing welcome copy and pending amount on controlled cyan/coral diffused light; the right side holds the three existing fields and one solid Apple-blue submit button. Stack the columns on mobile. Do not add benefits, testimonials, or extra marketing copy. Associate every label and input and keep targets at least 44px.`,
+  prompt: `Create an earnings-claim signup page that continues directly from the reward email. ${sharedBrief}\n\nUse one two-column card. Give the left summary the same airy mesh as the affiliate card: a white-to-cool-blue base with soft diffused cyan, coral and tangerine radial light, never a purple wash or hard decorative shapes. Keep the existing welcome copy, an unclaimed-money label with a yellow signal dot and a large Apple-blue balance. Keep the right form clean white with the three existing fields and one solid Apple-blue submit button. Stack the columns on mobile. Do not add benefits, testimonials, or extra marketing copy. Associate every label and input and keep targets at least 44px.`,
   html: `<main class="claim-page">
-  <section class="claim-summary"><b>smartaffiliate.</b><h1>Welcome!</h1><p>Set up your SmartAffiliate account to claim your earnings.</p><small>Pending earnings</small><strong>RM 42.00</strong></section>
+  <section class="claim-summary"><b>smartaffiliate.</b><h1>Welcome!</h1><p>Set up your SmartAffiliate account to claim your earnings.</p><small>You have unclaimed money</small><strong>RM 42.00</strong></section>
   <form class="claim-form">
     <label>Email<input type="email" value="aishah@example.com" disabled></label>
     <label>Set a password<input type="password"></label>
@@ -153,8 +152,8 @@ const signupArtifact: Artifact = {
   </form>
 </main>`,
   css: `.claim-page { display:grid; grid-template-columns:.88fr 1.12fr; max-width:820px; margin:auto; overflow:hidden; border:1px solid #e1e5e5; border-radius:24px; background:#fff; box-shadow:0 28px 70px rgba(33,45,46,.12); font-family:Roboto,sans-serif; }
-.claim-summary { display:flex; min-height:480px; flex-direction:column; padding:40px; background:radial-gradient(circle at 0 0,rgba(117,185,214,.3),transparent 45%),radial-gradient(circle at 100% 100%,rgba(229,111,99,.18),transparent 44%),#f8f9f9; }
-.claim-summary h1 { margin:48px 0 0; font-size:44px; font-weight:600; line-height:1.05; letter-spacing:-.04em; }.claim-summary p { margin:16px 0 0; }.claim-summary small { margin-top:56px; }.claim-summary strong { display:block; margin-top:8px; font-size:54px; font-weight:600; letter-spacing:-.05em; }
+.claim-summary { position:relative; display:flex; min-height:480px; overflow:hidden; flex-direction:column; padding:40px; background:radial-gradient(circle at 12% 0%,rgba(90,200,250,.62),transparent 38%),radial-gradient(circle at 100% 18%,rgba(255,59,107,.36),transparent 36%),radial-gradient(circle at 58% 115%,rgba(255,159,10,.42),transparent 42%),linear-gradient(145deg,#fff 8%,#f2f8ff 55%,#fff8ed 100%); color:#171419; }
+.claim-summary h1,.claim-summary p,.claim-summary small,.claim-summary strong,.claim-summary b { position:relative; z-index:1; }.claim-summary h1 { margin:48px 0 0; font-size:44px; font-weight:600; line-height:1.05; letter-spacing:-.04em; }.claim-summary p { margin:16px 0 0; color:#69636d; }.claim-summary small { margin-top:auto; padding-top:56px; color:#5f5964; font-weight:600; letter-spacing:.075em; text-transform:uppercase; }.claim-summary strong { display:block; margin-top:10px; color:#0071e3; font-size:54px; font-weight:600; letter-spacing:-.055em; }
 .claim-form { align-self:center; padding:40px 48px; }.claim-form label { display:block; margin-bottom:20px; color:#686f70; font-size:13px; font-weight:500; }.claim-form input { display:block; width:100%; min-height:46px; margin-top:8px; border:1px solid #d9ddde; border-radius:11px; background:#f5f7f7; font-size:15px; }
 .claim-form button { width:100%; min-height:46px; border:0; border-radius:12px; background:#0071e3; color:#fff; font-size:15px; font-weight:600; }
 @media(max-width:700px){.claim-page{grid-template-columns:1fr}.claim-summary{min-height:260px}}`,

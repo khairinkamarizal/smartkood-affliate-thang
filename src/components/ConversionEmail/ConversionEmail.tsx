@@ -118,8 +118,8 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
         <Box sx={{ padding: { xs: "32px 24px 40px", sm: "32px 48px 40px" } }}>
           <Box
             sx={{
-              background: "#f2f8fc",
-              border: "1px solid #dceaf1",
+              background: "#fff",
+              border: "1px solid #e4e7eb",
               borderRadius: "14px",
               display: "grid",
               gap: "16px",
@@ -150,35 +150,73 @@ export function ConversionEmail({ state, t, variant }: ConversionEmailProps) {
 
           <Box
             sx={{
-              borderTop: "1px solid #e4e7eb",
-              mt: "24px",
-              pt: "24px",
+              background: "#0071e3",
+              border: "1px solid rgba(0,92,184,.34)",
+              borderRadius: "20px",
+              boxShadow: "0 18px 38px rgba(0,113,227,.24)",
+              mt: "20px",
+              overflow: "hidden",
+              padding: { xs: "28px 20px 20px", sm: "32px 32px 24px" },
+              position: "relative",
               textAlign: "center",
             }}
           >
-            <Typography sx={{ color: "#77717b", fontSize: 12.5, fontWeight: 500 }}>{t("emailConvBalanceLabel")}</Typography>
-            <Typography sx={{ color: "#171419", fontSize: 36, fontWeight: 600, letterSpacing: "-.045em", lineHeight: 1, mt: "8px" }}>RM {state.balance.toFixed(2)}</Typography>
-          </Box>
-
-          <Box sx={{ pt: "24px", textAlign: "center" }}>
+            <Box
+              aria-hidden="true"
+              sx={{
+                background: "#64d2ff",
+                borderRadius: "50%",
+                height: 96,
+                left: -46,
+                opacity: .82,
+                position: "absolute",
+                top: -50,
+                width: 96,
+              }}
+            />
+            <Box
+              aria-hidden="true"
+              sx={{
+                background: "#ff375f",
+                borderRadius: "50%",
+                bottom: -58,
+                height: 112,
+                opacity: .82,
+                position: "absolute",
+                right: -54,
+                width: 112,
+              }}
+            />
+            <Box sx={{ alignItems: "center", display: "inline-flex", gap: "8px", position: "relative" }}>
+              <Box aria-hidden="true" sx={{ background: "#ffd60a", borderRadius: "50%", height: 8, width: 8 }} />
+              <Typography sx={{ color: "rgba(255,255,255,.86)", fontSize: 11.5, fontWeight: 600, letterSpacing: ".075em", textTransform: "uppercase" }}>
+                {t("emailConvBalanceLabel")}
+              </Typography>
+            </Box>
+            <Typography sx={{ color: "#fff", fontSize: { xs: 46, sm: 54 }, fontWeight: 600, letterSpacing: "-.055em", lineHeight: 1, mt: "10px", position: "relative" }}>
+              RM {state.balance.toFixed(2)}
+            </Typography>
             <Link
               href={href}
               underline="none"
               sx={{
                 alignItems: "center",
-                background: "#0071e3",
+                background: "#fff",
                 borderRadius: "12px",
-                boxShadow: "0 10px 24px rgba(0,113,227,.24)",
-                color: "#fff",
+                boxShadow: "0 8px 20px rgba(0,55,110,.18)",
+                color: "#0068d1",
                 display: "inline-flex",
                 fontSize: 14,
                 fontWeight: 600,
                 gap: "8px",
                 justifyContent: "center",
-                minHeight: 44,
-                padding: "0 21px",
+                minHeight: 48,
+                mt: "24px",
+                padding: "0 24px",
+                position: "relative",
                 transition: "transform .2s ease, box-shadow .2s ease",
-                "&:hover": { background: "#0064c8", boxShadow: "0 13px 28px rgba(0,113,227,.3)", transform: "translateY(-1px)" },
+                width: { xs: "100%", sm: "auto" },
+                "&:hover": { background: "#f4f9ff", boxShadow: "0 11px 24px rgba(0,55,110,.24)", transform: "translateY(-1px)" },
                 "&:focus-visible": { outline: "3px solid #73c8f2", outlineOffset: 3 },
               }}
             >
