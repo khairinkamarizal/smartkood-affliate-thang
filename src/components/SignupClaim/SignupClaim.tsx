@@ -52,7 +52,7 @@ export function SignupClaim({ state, t }: SignupClaimProps) {
         <Box
           sx={{
             background:
-              'radial-gradient(circle at 12% 0%, rgba(90,200,250,.62), transparent 38%), radial-gradient(circle at 100% 18%, rgba(255,59,107,.36), transparent 36%), radial-gradient(circle at 58% 115%, rgba(255,159,10,.42), transparent 42%), linear-gradient(145deg, #ffffff 8%, #f2f8ff 55%, #fff8ed 100%)',
+              'radial-gradient(circle at 12% 0%, rgba(90,200,250,.55), transparent 36%), radial-gradient(circle at 100% 18%, rgba(255,59,107,.34), transparent 34%), radial-gradient(circle at 58% 115%, rgba(255,159,10,.38), transparent 40%), linear-gradient(145deg, #ffffff 8%, #f2f8ff 55%, #fff8ed 100%)',
             borderBottom: { xs: '1px solid #e7e6eb', md: 0 },
             borderRight: { xs: 0, md: '1px solid #e7e6eb' },
             color: '#171419',
@@ -80,7 +80,7 @@ export function SignupClaim({ state, t }: SignupClaimProps) {
                   {t('signupBalanceLabel')}
                 </Typography>
               </Box>
-              <Typography sx={{ color: '#0071e3', fontSize: { xs: 46, sm: 54 }, fontWeight: 600, letterSpacing: '-.055em', lineHeight: 1, mt: '10px' }}>
+              <Typography sx={{ color: '#ff3b6b', fontSize: { xs: 46, sm: 54 }, fontWeight: 600, letterSpacing: '-.055em', lineHeight: 1, mt: '10px' }}>
                 RM {state.balance.toFixed(2)}
               </Typography>
             </Box>
